@@ -1,4 +1,4 @@
-package top.afery.community;
+package top.aftery.community;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

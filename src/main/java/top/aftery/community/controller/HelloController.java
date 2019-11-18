@@ -1,4 +1,4 @@
-package top.afery.community.controller;
+package top.aftery.community.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

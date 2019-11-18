@@ -1,14 +1,11 @@
-package top.afery.community.provider;
+package top.aftery.community.provider;
 
 import cn.hutool.http.HttpUtil;
-import cn.hutool.json.JSON;
-import cn.hutool.json.JSONArray;
-import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import top.afery.community.dto.AccessTockenDTO;
-import top.afery.community.dto.GithubUser;
+import top.aftery.community.dto.AccessTockenDTO;
+import top.aftery.community.dto.GithubUser;
 
 import java.util.HashMap;
 

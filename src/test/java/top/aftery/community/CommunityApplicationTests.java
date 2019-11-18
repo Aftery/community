@@ -1,4 +1,4 @@
-package top.afery.community;
+package top.aftery.community;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

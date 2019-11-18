@@ -1,4 +1,4 @@
-package top.afery.community.dto;
+package top.aftery.community.dto;
 
 import lombok.Getter;
 import lombok.Setter;
