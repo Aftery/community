@@ -2,6 +2,7 @@ package top.aftery.community.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import top.aftery.community.model.User;
 
 /**
@@ -14,4 +15,7 @@ public interface UserMapper {
 
     @Insert("Insert into user(name,account_id,token,gmt_create,gmt_modified) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified})")
     void saveUser(User user);
+
+    @Select("select * from user where token=#{token}")
+    User findByToken(String token);
 }

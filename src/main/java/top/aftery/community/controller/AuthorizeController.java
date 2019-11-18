@@ -12,7 +12,9 @@ import top.aftery.community.mapper.UserMapper;
 import top.aftery.community.model.User;
 import top.aftery.community.provider.GitubProvider;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.UUID;
 
 /**
@@ -39,7 +41,7 @@ public class AuthorizeController {
     private UserMapper mapper;
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name = "code") String code, @RequestParam("state") String state, HttpServletRequest request) {
+    public String callback(@RequestParam(name = "code") String code, @RequestParam("state") String state, HttpServletRequest request, HttpServletResponse response) {
         AccessTockenDTO accessTockenDTO = new AccessTockenDTO();
         accessTockenDTO.setClient_id(clienid);
         accessTockenDTO.setClient_secret(clientSecret);
@@ -59,7 +61,8 @@ public class AuthorizeController {
             user.setName(githubUser.getName());
             user.setToken(UUID.randomUUID().toString());
             mapper.saveUser(user);
-            request.getSession().setAttribute("user", githubUser);
+            response.addCookie(new Cookie("token",user.getToken()));
+            //request.getSession().setAttribute("user", githubUser);
             return "redirect:/";
         } else {
             return "redirect:/";
