@@ -12,3 +12,6 @@ logging:
   level:
 #    top.aftery.community.mapper: debug
     top.aftery.community.mapper: debug
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
