@@ -13,6 +13,7 @@ import top.aftery.community.model.User;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("all")
 public class QuestionDTO {
     private Integer id;
     private String title;

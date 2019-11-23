@@ -16,6 +16,7 @@ import java.util.HashMap;
  **/
 @Slf4j
 @Component
+@SuppressWarnings("all")
 public class GitubProvider {
 
 

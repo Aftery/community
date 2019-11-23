@@ -11,6 +11,7 @@ import top.aftery.community.model.User;
  * @Version 1.0
  **/
 @Mapper
+@SuppressWarnings("all")
 public interface UserMapper {
 
     @Insert("Insert into user(name,account_id,token,gmt_create,gmt_modified,avatar_url) values(#{name},#{accountId},#{token},#{gmtCreate},#{gmtModified},#{avatarUrl})")

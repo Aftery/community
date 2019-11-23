@@ -12,6 +12,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
+@SuppressWarnings("all")
 public class User {
 
     private Integer id;

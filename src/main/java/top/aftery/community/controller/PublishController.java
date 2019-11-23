@@ -20,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
  **/
 @Slf4j
 @Controller
+@SuppressWarnings("all")
 public class PublishController {
 
 

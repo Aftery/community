@@ -18,6 +18,7 @@ import java.util.List;
  * @Version 1.0
  **/
 @Service
+@SuppressWarnings("all")
 public class QuestionService {
 
     @Autowired

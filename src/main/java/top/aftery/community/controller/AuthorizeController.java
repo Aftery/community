@@ -52,8 +52,6 @@ public class AuthorizeController {
         GithubUser githubUser = provider.getUser(accessTocken);
         log.info("\n {}", githubUser);
         if (githubUser != null) {
-
-
             User user = new User();
             user.setAccountId(String.valueOf(githubUser.getId()));
             user.setGmtCreate(System.currentTimeMillis());

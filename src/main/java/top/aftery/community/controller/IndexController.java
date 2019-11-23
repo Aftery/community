@@ -9,13 +9,12 @@ import top.aftery.community.dto.QuestionDTO;
 import top.aftery.community.mapper.UserMapper;
 import top.aftery.community.model.User;
 import top.aftery.community.service.QuestionService;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-
 @Slf4j
 @Controller
+@SuppressWarnings("all")
 public class IndexController {
 
     @Autowired
