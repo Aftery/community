@@ -1,6 +1,5 @@
 package top.aftery.community.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,21 +35,21 @@ public class PublishController {
     @PostMapping("/publish")
     public String doPublish(Question question, HttpServletRequest request, Model model) {
         log.info("\n tostring{}", question);
-        model.addAttribute("title",question.getTitle());
-        model.addAttribute("des",question.getDescription());
-        model.addAttribute("tag",question.getTag());
+        model.addAttribute("title", question.getTitle());
+        model.addAttribute("des", question.getDescription());
+        model.addAttribute("tag", question.getTag());
 
-        if (null == question.getTitle() || ""==question.getTitle()) {
-            model.addAttribute("error","标题不能为空");
-            return  "publish";
+        if (null == question.getTitle() || "" == question.getTitle()) {
+            model.addAttribute("error", "标题不能为空");
+            return "publish";
         }
-        if (null == question.getDescription() || ""==question.getDescription()) {
-            model.addAttribute("error","问题补充不能为空");
-            return  "publish";
+        if (null == question.getDescription() || "" == question.getDescription()) {
+            model.addAttribute("error", "问题补充不能为空");
+            return "publish";
         }
-        if (null == question.getTag() || ""==question.getTag()) {
-            model.addAttribute("error","标签不能为空");
-            return  "publish";
+        if (null == question.getTag() || "" == question.getTag()) {
+            model.addAttribute("error", "标签不能为空");
+            return "publish";
         }
 
 

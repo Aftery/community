@@ -2,6 +2,7 @@ package top.aftery.community.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import top.aftery.community.model.Question;
 
@@ -21,4 +22,7 @@ public interface QuestionMapper {
 
     @Select("select * from question")
     List<Question> list();
+
+    @Select("select * from question where creator=#{userId}")
+    List<Question> listUser(@Param("userId") Integer userId);
 }

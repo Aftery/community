@@ -11,7 +11,6 @@ import top.aftery.community.dto.GithubUser;
 import top.aftery.community.mapper.UserMapper;
 import top.aftery.community.model.User;
 import top.aftery.community.provider.GitubProvider;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
