@@ -1,5 +1,6 @@
 package top.aftery.community.service;
 
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,8 +29,10 @@ public class QuestionService {
     private QuestionMapper questionMapper;
 
 
-    public List<QuestionDTO> list() {
-        List<Question> questions = questionMapper.list();
+    public PageInfo<QuestionDTO> list(Integer page, Integer size) {
+        PageInfo<QuestionDTO> pageInfo=new PageInfo<>();
+
+        List<Question> questions = questionMapper.list(page,size);
         List<QuestionDTO> questionDTOList = new ArrayList<>();
 
         for (Question question : questions) {
@@ -39,7 +42,8 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOList.add(questionDTO);
         }
-        return questionDTOList;
+        pageInfo.setList(questionDTOList);
+        return pageInfo;
     }
 
     public List<QuestionDTO> listUser(Integer userId) {
@@ -54,5 +58,14 @@ public class QuestionService {
             questionDTOList.add(questionDTO);
         }
         return questionDTOList;
+    }
+
+    public QuestionDTO getById(Integer id) {
+        Question question=questionMapper.getById(id);
+        QuestionDTO questionDTO = new QuestionDTO();
+        BeanUtils.copyProperties(question, questionDTO);
+        User user = mapper.findById(question.getCreator());
+        questionDTO.setUser(user);
+        return  questionDTO;
     }
 }
