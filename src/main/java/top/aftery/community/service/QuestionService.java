@@ -28,10 +28,6 @@ import java.util.List;
 public class QuestionService {
 
     @Autowired
-    private UserMapper mapper;
-
-
-    @Autowired
     private QuestionUserDTOMapper questionUserMapper;
 
 
