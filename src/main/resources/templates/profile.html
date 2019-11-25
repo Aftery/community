@@ -18,10 +18,10 @@
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h3><span th:text="${sectionName}"></span></h3>
             <hr>
-            <div class="media" th:each="question:${questions}">
+            <div class="media" th:each="question:${pageInfo.list}">
                 <div class="media-left">
                     <a href="#">
-                        <img class="media-object" th:src="${question.user.avatarUrl}" alt="...">
+                        <img class="media-object" th:src="${question.userAvatarUrl}" alt="...">
                     </a>
                 </div>
                 <div class="media-body">
@@ -34,6 +34,22 @@
                     </span>
                 </div>
             </div>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li>
+                        <a th:href="@{'/profile/'+${section}}" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                    <li th:each="nums:${pageInfo.navigatepageNums}" th:class="${pageInfo.pageNum==nums}?'active':''"><a
+                            th:href="@{'/profile/'+${section}(page=${nums})}" th:text="${nums}"></a></li>
+                    <li>
+                        <a th:href="@{'/profile/'+${section}(page=${pageInfo.pages})}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">

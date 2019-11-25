@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import top.aftery.community.dto.QuestionDTO;
+import top.aftery.community.dto.QuestionUserDTO;
 import top.aftery.community.service.QuestionService;
 
 /**
@@ -21,9 +21,10 @@ public class QuestionController {
     private QuestionService service;
 
     @GetMapping("/question/{id}")
-    public String question(@PathVariable(value = "id") Integer id, Model model){
-        QuestionDTO questionDTO =service.getById(id);
-        model.addAttribute("question",questionDTO);
-        return  "question";
+    public String question(@PathVariable(value = "id") Integer id, Model model) {
+        QuestionUserDTO questionUserDTO = service.getById(id);
+        model.addAttribute("question", questionUserDTO);
+        return "question";
     }
+
 }

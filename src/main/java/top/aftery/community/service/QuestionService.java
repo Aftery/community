@@ -1,11 +1,15 @@
 package top.aftery.community.service;
 
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import top.aftery.community.dto.QuestionDTO;
+import top.aftery.community.dto.QuestionUserDTO;
 import top.aftery.community.mapper.QuestionMapper;
+import top.aftery.community.mapper.QuestionUserDTOMapper;
 import top.aftery.community.mapper.UserMapper;
 import top.aftery.community.model.Question;
 import top.aftery.community.model.User;
@@ -18,6 +22,7 @@ import java.util.List;
  * @Date 2019/11/21 20:52
  * @Version 1.0
  **/
+@Slf4j
 @Service
 @SuppressWarnings("all")
 public class QuestionService {
@@ -25,47 +30,27 @@ public class QuestionService {
     @Autowired
     private UserMapper mapper;
 
+
     @Autowired
-    private QuestionMapper questionMapper;
+    private QuestionUserDTOMapper questionUserMapper;
 
 
-    public PageInfo<QuestionDTO> list(Integer page, Integer size) {
-        PageInfo<QuestionDTO> pageInfo=new PageInfo<>();
+    public PageInfo<QuestionUserDTO> list(Integer page, Integer size) {
+        PageHelper.startPage(page, size);
+        List<QuestionUserDTO> list = questionUserMapper.list();
+        PageInfo<QuestionUserDTO> pageInfo1 = new PageInfo<QuestionUserDTO>(list);
+        return pageInfo1;
+    }
 
-        List<Question> questions = questionMapper.list(page,size);
-        List<QuestionDTO> questionDTOList = new ArrayList<>();
-
-        for (Question question : questions) {
-            User user = mapper.findById(question.getCreator());
-            QuestionDTO questionDTO = new QuestionDTO();
-            BeanUtils.copyProperties(question, questionDTO);
-            questionDTO.setUser(user);
-            questionDTOList.add(questionDTO);
-        }
-        pageInfo.setList(questionDTOList);
+    public PageInfo<QuestionUserDTO> listUser(Integer userId, Integer page, Integer size) {
+        PageHelper.startPage(page, size);
+        List<QuestionUserDTO> questionUserDTOS = questionUserMapper.listUser(userId);
+        PageInfo<QuestionUserDTO> pageInfo = new PageInfo<>(questionUserDTOS);
         return pageInfo;
     }
 
-    public List<QuestionDTO> listUser(Integer userId) {
-        List<Question> questions = questionMapper.listUser(userId);
-        List<QuestionDTO> questionDTOList = new ArrayList<>();
-
-        for (Question question : questions) {
-            User user = mapper.findById(question.getCreator());
-            QuestionDTO questionDTO = new QuestionDTO();
-            BeanUtils.copyProperties(question, questionDTO);
-            questionDTO.setUser(user);
-            questionDTOList.add(questionDTO);
-        }
-        return questionDTOList;
-    }
-
-    public QuestionDTO getById(Integer id) {
-        Question question=questionMapper.getById(id);
-        QuestionDTO questionDTO = new QuestionDTO();
-        BeanUtils.copyProperties(question, questionDTO);
-        User user = mapper.findById(question.getCreator());
-        questionDTO.setUser(user);
-        return  questionDTO;
+    public QuestionUserDTO getById(Integer id) {
+        QuestionUserDTO questionUserDTO = questionUserMapper.getById(id);
+        return questionUserDTO;
     }
 }

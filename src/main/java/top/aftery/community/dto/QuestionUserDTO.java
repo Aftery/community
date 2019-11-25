@@ -3,7 +3,6 @@ package top.aftery.community.dto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import top.aftery.community.model.User;
 
 /**
  * @Author Aftery
@@ -14,7 +13,7 @@ import top.aftery.community.model.User;
 @Setter
 @ToString
 @SuppressWarnings("all")
-public class QuestionDTO {
+public class QuestionUserDTO {
     private Integer id;
     private String title;
     private String description;
@@ -25,6 +24,12 @@ public class QuestionDTO {
     private Integer viewCount;
     private Integer likeCount;
     private String tag;
-    private User user;
+    private Integer userId;
+    private String userName;
+    private String userAccountId;
+    private String userToken;
+    private Long userGmtCreate;
+    private Long userGmtModified;
+    private String userAvatarUrl;
 
 }
