@@ -11,6 +11,7 @@ import top.aftery.community.dto.QuestionUserDTO;
 import top.aftery.community.service.QuestionService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Slf4j
 @Controller
@@ -27,5 +28,7 @@ public class IndexController {
         model.addAttribute("pageInfo", pageInfo);
         return "Index";
     }
+
+
 
 }

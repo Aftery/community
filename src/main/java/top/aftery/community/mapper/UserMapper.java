@@ -3,6 +3,7 @@ package top.aftery.community.mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import top.aftery.community.model.User;
 
 /**
@@ -23,4 +24,10 @@ public interface UserMapper {
 
     @Select("select * from user where id=#{id}")
     User findById(Integer id);
+
+    @Select("select * from user where account_id=#{accountId} LIMIT 1")
+    User findByAccountId(String accountId);
+
+    @Update("update user set name=#{name},token=#{token},gmt_modified=#{gmtModified},avatar_url=#{avatarUrl} where id=#{id}")
+    void update(User user);
 }
