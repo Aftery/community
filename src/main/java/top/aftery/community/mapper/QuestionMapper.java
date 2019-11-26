@@ -1,13 +1,9 @@
 package top.aftery.community.mapper;
 
-import cn.hutool.db.Page;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import top.aftery.community.model.Question;
-
-import java.util.List;
 
 /**
  * @Author Aftery
@@ -19,6 +15,8 @@ import java.util.List;
 public interface QuestionMapper {
 
     @Insert("insert into question(title,description,gmt_create,gmt_modified,creator,comment_count,view_count,like_count,tag) values(#{title},#{description},#{gmtCreate},#{gmtModified},#{creator},#{commentCount},#{viewCount},#{likeCount},#{tag})")
-    void create(Question question);
+    void save(Question question);
 
+    @Update("update question set title=#{title},description=#{description},gmt_modified=#{gmtModified},tag=#{tag} where id=#{id}")
+    void saveOrUpdate(Question question);
 }

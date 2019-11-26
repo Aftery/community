@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import top.aftery.community.dto.AccessTockenDTO;
 import top.aftery.community.dto.GithubUser;
-import top.aftery.community.mapper.UserMapper;
 import top.aftery.community.model.User;
 import top.aftery.community.provider.GitubProvider;
 import top.aftery.community.service.UserService;

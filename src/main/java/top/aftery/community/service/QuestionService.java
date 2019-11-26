@@ -1,20 +1,15 @@
 package top.aftery.community.service;
 
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.aftery.community.dto.QuestionUserDTO;
 import top.aftery.community.mapper.QuestionMapper;
 import top.aftery.community.mapper.QuestionUserDTOMapper;
-import top.aftery.community.mapper.UserMapper;
 import top.aftery.community.model.Question;
-import top.aftery.community.model.User;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +24,9 @@ public class QuestionService {
 
     @Autowired
     private QuestionUserDTOMapper questionUserMapper;
+
+    @Autowired
+    private  QuestionMapper questionMapper;
 
 
     public PageInfo<QuestionUserDTO> list(Integer page, Integer size) {
@@ -48,5 +46,16 @@ public class QuestionService {
     public QuestionUserDTO getById(Integer id) {
         QuestionUserDTO questionUserDTO = questionUserMapper.getById(id);
         return questionUserDTO;
+    }
+
+    public void saveOrUpdate(Question question) {
+        if (question.getId() == null) {
+            question.setGmtCreate(System.currentTimeMillis());
+            question.setGmtModified(question.getGmtCreate());
+            questionMapper.save(question);
+        }else{
+            question.setGmtModified(System.currentTimeMillis());
+            questionMapper.saveOrUpdate(question);
+        }
     }
 }
