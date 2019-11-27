@@ -13,29 +13,35 @@
 <div class="container-fluid main">
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
-            <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>起</h3>
-            <span>问题</span>
+            <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h3>
+<!--            <span>问题</span>-->
             <hr>
             <form action="/publish" method="post">
                 <input th:value="${id}" name="id" type="hidden">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要）:</label>
-                    <input type="text" class="form-control" id="title" name="title" th:value="${title}" placeholder="问题标题.....">
+                    <input type="text" class="form-control" id="title" name="title" th:value="${title}"
+                           placeholder="问题标题.....">
                 </div>
                 <div class="form-group">
                     <label for="description">问题补充: （必填，请参照右侧提示）</label>
-                    <textarea class="form-control" id="description" name="description" th:text="${des}" cols="30" rows="10"
+                    <textarea class="form-control" id="description" name="description" th:text="${des}" cols="30"
+                              rows="10"
                               placeholder="问题补充...."></textarea>
                 </div>
                 <div class="form-group">
                     <label for="tag">添加标签</label>
-                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签，以,号隔开" th:value="${tag}">
+                    <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签，以,号隔开"
+                           th:value="${tag}">
                 </div>
 
                 <div class="container-fluid main">
                     <div class="row">
-                        <div th:text="${error}" class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12"></div>
-                        <button type="submit" class="btn btn-success btn-pulish col-lg-3 col-md-12 col-sm-12 col-xs-12">布</button>
+                        <div th:text="${error}" th:if="${error}!=null"
+                             class="alert alert-danger col-lg-9 col-md-12 col-sm-12 col-xs-12"></div>
+                        <button type="submit" class="btn btn-success btn-pulish col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            发布
+                        </button>
                     </div>
                 </div>
 
