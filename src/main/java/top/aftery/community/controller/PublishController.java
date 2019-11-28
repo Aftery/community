@@ -34,8 +34,11 @@ public class PublishController {
     }
 
     @GetMapping("/publish/{id}")
-    public String editPubish(@PathVariable(name = "id") Integer id,Model model){
+    public String editPubish(@PathVariable(name = "id") Integer id,Model model) throws Exception {
         QuestionUserDTO question = questionService.getById(id);
+        if(null==question){
+            throw  new Exception("45454545");
+        }
         model.addAttribute("title", question.getTitle());
         model.addAttribute("des", question.getDescription());
         model.addAttribute("tag", question.getTag());
