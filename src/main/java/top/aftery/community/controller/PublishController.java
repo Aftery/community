@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import top.aftery.community.dto.QuestionUserDTO;
+import top.aftery.community.exception.CustomizeErrorCode;
+import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.model.Question;
 import top.aftery.community.model.User;
 import top.aftery.community.service.QuestionService;
@@ -37,7 +39,7 @@ public class PublishController {
     public String editPubish(@PathVariable(name = "id") Integer id,Model model) throws Exception {
         QuestionUserDTO question = questionService.getById(id);
         if(null==question){
-            throw  new Exception("45454545");
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
         model.addAttribute("title", question.getTitle());
         model.addAttribute("des", question.getDescription());

@@ -18,5 +18,5 @@ public interface QuestionMapper {
     void save(Question question);
 
     @Update("update question set title=#{title},description=#{description},gmt_modified=#{gmtModified},tag=#{tag} where id=#{id}")
-    void saveOrUpdate(Question question);
+    Integer saveOrUpdate(Question question);
 }

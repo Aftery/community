@@ -1,6 +1,6 @@
 github:
   clienid:
-  client_secret:
+  client_secret: 54e28
   redirect_uri: http://localhost:8080/callback
 spring:
   datasource:
@@ -8,9 +8,8 @@ spring:
     password: 12345678
     username: root
     driver-class-name: com.mysql.jdbc.Driver
-  mvc:
-    static-path-pattern: /statics/**
-    throw-exception-if-no-handler-found: true
+#  mvc:
+#    throw-exception-if-no-handler-found: true
 logging:
   level:
 #    top.aftery.community.mapper: debug

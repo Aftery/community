@@ -6,6 +6,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import top.aftery.community.dto.QuestionUserDTO;
+import top.aftery.community.exception.CustomizeErrorCode;
+import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.mapper.QuestionMapper;
 import top.aftery.community.mapper.QuestionUserDTOMapper;
 import top.aftery.community.model.Question;
@@ -55,7 +57,10 @@ public class QuestionService {
             questionMapper.save(question);
         }else{
             question.setGmtModified(System.currentTimeMillis());
-            questionMapper.saveOrUpdate(question);
+            Integer  sun= questionMapper.saveOrUpdate(question);
+            if(sun<0){
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
         }
     }
 }
