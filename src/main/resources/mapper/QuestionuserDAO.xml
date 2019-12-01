@@ -18,6 +18,7 @@
     <result column="user_gmt_create" jdbcType="BIGINT" property="userGmtCreate" />
     <result column="user_gmt_modified" jdbcType="BIGINT" property="userGmtModified" />
     <result column="user_avatar_url" jdbcType="VARCHAR" property="userAvatarUrl" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="top.aftery.community.model.Questionuser">
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
@@ -83,7 +84,7 @@
   <sql id="Base_Column_List">
     id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, 
     tag, user_id, user_name, user_account_id, user_token, user_gmt_create, user_gmt_modified, 
-    user_avatar_url
+    user_avatar_url,description
   </sql>
   <sql id="Blob_Column_List">
     description

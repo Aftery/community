@@ -1,7 +1,6 @@
 package top.aftery.community.service;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.ArrayUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -10,6 +9,7 @@ import org.springframework.stereotype.Service;
 import top.aftery.community.exception.CustomizeErrorCode;
 import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.mapper.QuestionDAO;
+import top.aftery.community.mapper.QuestionExtDAO;
 import top.aftery.community.mapper.QuestionuserDAO;
 import top.aftery.community.model.Question;
 import top.aftery.community.model.Questionuser;
@@ -35,6 +35,9 @@ public class QuestionService {
     @Autowired
     private QuestionDAO questionDAO;
 
+    @Autowired
+    private QuestionExtDAO extDAO;
+
 
     public PageInfo<Questionuser> list(Integer page, Integer size) {
         PageHelper.startPage(page, size);
@@ -56,6 +59,7 @@ public class QuestionService {
         QuestionuserExample questionuserExample = new QuestionuserExample();;
         questionuserExample.createCriteria().andIdEqualTo(id);
         List<Questionuser> list = questionuserDAO.selectByExample(questionuserExample);
+
         if(CollUtil.isNotEmpty(list)){
             Questionuser questionuser = list.get(0);
             return questionuser;
@@ -67,13 +71,24 @@ public class QuestionService {
         if (question.getId() == null) {
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
-            questionDAO.insert(question);
+            questionDAO.insertSelective(question);
         } else {
             question.setGmtModified(System.currentTimeMillis());
-            int sun = questionDAO.updateByPrimaryKey(question);
+            int sun = questionDAO.updateByPrimaryKeySelective(question);
             if (sun < 0) {
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
+    }
+
+    /**
+     * 累加阅读数
+     * @param id
+     */
+    public void incView(Integer id) {
+        Question record = new Question();
+        record.setId(id);
+        record.setViewCount(1);
+        extDAO.incView(record);
     }
 }

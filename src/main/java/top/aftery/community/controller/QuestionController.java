@@ -1,5 +1,6 @@
 package top.aftery.community.controller;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import top.aftery.community.service.QuestionService;
  * @Date 2019/11/24 16:05
  * @Version 1.0
  **/
+@Slf4j
 @Controller
 @SuppressWarnings("all")
 public class QuestionController {
@@ -28,6 +30,7 @@ public class QuestionController {
         if(null==questionuser){
             throw new  CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
+        service.incView(id);
         model.addAttribute("question", questionuser);
         return "question";
     }
