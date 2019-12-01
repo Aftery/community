@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import top.aftery.community.dto.QuestionUserDTO;
+import top.aftery.community.model.Questionuser;
 import top.aftery.community.model.User;
 import top.aftery.community.service.QuestionService;
 
@@ -43,8 +43,7 @@ public class ProfileController {
             model.addAttribute("section", "replies");
             model.addAttribute("sectionName", "最新回复");
         }
-
-        PageInfo<QuestionUserDTO> pageInfo = service.listUser(user.getId(), page, size);
+        PageInfo<Questionuser> pageInfo = service.listUser(user.getId(), page, size);
         model.addAttribute("pageInfo", pageInfo);
         return "profile";
     }

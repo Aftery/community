@@ -1,10 +1,11 @@
 package top.aftery.community;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-//@SpringBootApplication
-@SpringBootApplication(scanBasePackages={"top.aftery.community.advice","top.aftery.community"})
+@SpringBootApplication
+@MapperScan("top.aftery.community.mapper")
 public class CommunityApplication {
 
     public static void main(String[] args) {

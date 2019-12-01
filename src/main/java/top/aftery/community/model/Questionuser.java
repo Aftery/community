@@ -3,10 +3,10 @@ package top.aftery.community.model;
 import java.io.Serializable;
 
 /**
- * question
+ * questionuser
  * @author 
  */
-public class Question implements Serializable {
+public class Questionuser implements Serializable {
     private Integer id;
 
     private String title;
@@ -24,6 +24,23 @@ public class Question implements Serializable {
     private Integer likeCount;
 
     private String tag;
+
+    private Integer userId;
+
+    private String userName;
+
+    private String userAccountId;
+
+    private String userToken;
+
+    private Long userGmtCreate;
+
+    private Long userGmtModified;
+
+    /**
+     * 用户头像
+     */
+    private String userAvatarUrl;
 
     private String description;
 
@@ -101,6 +118,62 @@ public class Question implements Serializable {
         this.tag = tag;
     }
 
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserAccountId() {
+        return userAccountId;
+    }
+
+    public void setUserAccountId(String userAccountId) {
+        this.userAccountId = userAccountId;
+    }
+
+    public String getUserToken() {
+        return userToken;
+    }
+
+    public void setUserToken(String userToken) {
+        this.userToken = userToken;
+    }
+
+    public Long getUserGmtCreate() {
+        return userGmtCreate;
+    }
+
+    public void setUserGmtCreate(Long userGmtCreate) {
+        this.userGmtCreate = userGmtCreate;
+    }
+
+    public Long getUserGmtModified() {
+        return userGmtModified;
+    }
+
+    public void setUserGmtModified(Long userGmtModified) {
+        this.userGmtModified = userGmtModified;
+    }
+
+    public String getUserAvatarUrl() {
+        return userAvatarUrl;
+    }
+
+    public void setUserAvatarUrl(String userAvatarUrl) {
+        this.userAvatarUrl = userAvatarUrl;
+    }
+
     public String getDescription() {
         return description;
     }
@@ -120,7 +193,7 @@ public class Question implements Serializable {
         if (getClass() != that.getClass()) {
             return false;
         }
-        Question other = (Question) that;
+        Questionuser other = (Questionuser) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
             && (this.getTitle() == null ? other.getTitle() == null : this.getTitle().equals(other.getTitle()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
@@ -130,6 +203,13 @@ public class Question implements Serializable {
             && (this.getViewCount() == null ? other.getViewCount() == null : this.getViewCount().equals(other.getViewCount()))
             && (this.getLikeCount() == null ? other.getLikeCount() == null : this.getLikeCount().equals(other.getLikeCount()))
             && (this.getTag() == null ? other.getTag() == null : this.getTag().equals(other.getTag()))
+            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+            && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
+            && (this.getUserAccountId() == null ? other.getUserAccountId() == null : this.getUserAccountId().equals(other.getUserAccountId()))
+            && (this.getUserToken() == null ? other.getUserToken() == null : this.getUserToken().equals(other.getUserToken()))
+            && (this.getUserGmtCreate() == null ? other.getUserGmtCreate() == null : this.getUserGmtCreate().equals(other.getUserGmtCreate()))
+            && (this.getUserGmtModified() == null ? other.getUserGmtModified() == null : this.getUserGmtModified().equals(other.getUserGmtModified()))
+            && (this.getUserAvatarUrl() == null ? other.getUserAvatarUrl() == null : this.getUserAvatarUrl().equals(other.getUserAvatarUrl()))
             && (this.getDescription() == null ? other.getDescription() == null : this.getDescription().equals(other.getDescription()));
     }
 
@@ -146,6 +226,13 @@ public class Question implements Serializable {
         result = prime * result + ((getViewCount() == null) ? 0 : getViewCount().hashCode());
         result = prime * result + ((getLikeCount() == null) ? 0 : getLikeCount().hashCode());
         result = prime * result + ((getTag() == null) ? 0 : getTag().hashCode());
+        result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
+        result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
+        result = prime * result + ((getUserAccountId() == null) ? 0 : getUserAccountId().hashCode());
+        result = prime * result + ((getUserToken() == null) ? 0 : getUserToken().hashCode());
+        result = prime * result + ((getUserGmtCreate() == null) ? 0 : getUserGmtCreate().hashCode());
+        result = prime * result + ((getUserGmtModified() == null) ? 0 : getUserGmtModified().hashCode());
+        result = prime * result + ((getUserAvatarUrl() == null) ? 0 : getUserAvatarUrl().hashCode());
         result = prime * result + ((getDescription() == null) ? 0 : getDescription().hashCode());
         return result;
     }
@@ -165,6 +252,13 @@ public class Question implements Serializable {
         sb.append(", viewCount=").append(viewCount);
         sb.append(", likeCount=").append(likeCount);
         sb.append(", tag=").append(tag);
+        sb.append(", userId=").append(userId);
+        sb.append(", userName=").append(userName);
+        sb.append(", userAccountId=").append(userAccountId);
+        sb.append(", userToken=").append(userToken);
+        sb.append(", userGmtCreate=").append(userGmtCreate);
+        sb.append(", userGmtModified=").append(userGmtModified);
+        sb.append(", userAvatarUrl=").append(userAvatarUrl);
         sb.append(", description=").append(description);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");

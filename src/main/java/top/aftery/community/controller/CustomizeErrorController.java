@@ -20,7 +20,6 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/error")
 public class CustomizeErrorController implements ErrorController {
 
-
     @Override
     public String getErrorPath() {
         return null;

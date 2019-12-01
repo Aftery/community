@@ -1,6 +1,3 @@
-github:
-  clienid:
-  client_secret: 54e28
   redirect_uri: http://localhost:8080/callback
 spring:
   datasource:
@@ -17,6 +14,7 @@ logging:
 mybatis:
   configuration:
     map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
 
 pagehelper:
   helper-dialect: mysql

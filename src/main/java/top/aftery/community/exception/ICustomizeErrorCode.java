@@ -9,5 +9,4 @@ public interface ICustomizeErrorCode {
 
     String getMessage();
 
-
 }

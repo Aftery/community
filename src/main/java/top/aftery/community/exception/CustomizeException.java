@@ -7,8 +7,8 @@ package top.aftery.community.exception;
  **/
 @SuppressWarnings("all")
 public class CustomizeException extends RuntimeException {
-    private String message;
 
+    private String message;
 
     public CustomizeException(ICustomizeErrorCode errorCode) {
         this.message = errorCode.getMessage();

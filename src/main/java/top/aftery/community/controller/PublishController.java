@@ -7,10 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import top.aftery.community.dto.QuestionUserDTO;
 import top.aftery.community.exception.CustomizeErrorCode;
 import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.model.Question;
+import top.aftery.community.model.Questionuser;
 import top.aftery.community.model.User;
 import top.aftery.community.service.QuestionService;
 
@@ -37,14 +37,14 @@ public class PublishController {
 
     @GetMapping("/publish/{id}")
     public String editPubish(@PathVariable(name = "id") Integer id,Model model) throws Exception {
-        QuestionUserDTO question = questionService.getById(id);
-        if(null==question){
+        Questionuser questionuser = questionService.getById(id);
+        if(null==questionuser){
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
-        model.addAttribute("title", question.getTitle());
-        model.addAttribute("des", question.getDescription());
-        model.addAttribute("tag", question.getTag());
-        model.addAttribute("id", question.getId());
+        model.addAttribute("title", questionuser.getTitle());
+        model.addAttribute("des", questionuser.getDescription());
+        model.addAttribute("tag", questionuser.getTag());
+        model.addAttribute("id", questionuser.getId());
         return "publish";
     }
 

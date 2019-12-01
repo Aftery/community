@@ -32,16 +32,15 @@ public class AuthorizeController {
 
     @Value("${github.clienid}")
     private String clienid;
+
     @Value("${github.client_secret}")
     private String clientSecret;
+
     @Value("${github.redirect_uri}")
     private String redirectUri;
 
-
-
     @Autowired
     private UserService userService;
-
 
 
     @GetMapping("/callback")

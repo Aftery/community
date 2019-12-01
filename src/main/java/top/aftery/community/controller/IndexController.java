@@ -7,7 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import top.aftery.community.dto.QuestionUserDTO;
+import top.aftery.community.model.Questionuser;
 import top.aftery.community.service.QuestionService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +23,7 @@ public class IndexController {
     @GetMapping("/")
     public String index(HttpServletRequest request, Model model, @RequestParam(value = "page", defaultValue = "1") Integer page, @RequestParam(value = "size", defaultValue = "5") Integer size) {
         log.info("{/n {}}", "进来了");
-        PageInfo<QuestionUserDTO> pageInfo = service.list(page, size);
+        PageInfo<Questionuser> pageInfo = service.list(page, size);
         model.addAttribute("pageInfo", pageInfo);
         return "Index";
     }

@@ -13,8 +13,6 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode {
 
     private String message;
 
-
-
     CustomizeErrorCode(String message) {
         this.message = message;
     }

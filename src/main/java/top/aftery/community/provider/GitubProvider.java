@@ -19,7 +19,6 @@ import java.util.HashMap;
 @SuppressWarnings("all")
 public class GitubProvider {
 
-
     public String getAccessTocken(AccessTockenDTO accessTockenDTO) {
         HashMap<String, Object> map = new HashMap<>(16);
         map.put("client_id", accessTockenDTO.getClient_id());
