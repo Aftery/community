@@ -1,4 +1,6 @@
-
+github:
+  clienid:
+  client_secret:
   redirect_uri: http://localhost:8080/callback
 spring:
   datasource:
