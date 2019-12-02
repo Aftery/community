@@ -1,18 +1,17 @@
 package top.aftery.community.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import top.aftery.community.model.Question;
 import top.aftery.community.model.QuestionExample;
-
-import java.util.List;
-
 
 public interface QuestionDAO {
     long countByExample(QuestionExample example);
 
     int deleteByExample(QuestionExample example);
 
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(Question record);
 
@@ -22,7 +21,7 @@ public interface QuestionDAO {
 
     List<Question> selectByExample(QuestionExample example);
 
-    Question selectByPrimaryKey(Integer id);
+    Question selectByPrimaryKey(Long id);
 
     int updateByExampleSelective(@Param("record") Question record, @Param("example") QuestionExample example);
 

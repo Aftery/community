@@ -55,7 +55,7 @@ public class QuestionService {
         return pageInfo;
     }
 
-    public Questionuser getById(Integer id) {
+    public Questionuser getById(Long id) {
         QuestionuserExample questionuserExample = new QuestionuserExample();;
         questionuserExample.createCriteria().andIdEqualTo(id);
         List<Questionuser> list = questionuserDAO.selectByExample(questionuserExample);
@@ -85,7 +85,7 @@ public class QuestionService {
      * 累加阅读数
      * @param id
      */
-    public void incView(Integer id) {
+    public void incView(Long id) {
         Question record = new Question();
         record.setId(id);
         record.setViewCount(1);

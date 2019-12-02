@@ -7,7 +7,6 @@ import top.aftery.community.model.CommentExample;
 import java.util.List;
 
 public interface CommentDAO {
-
     long countByExample(CommentExample example);
 
     int deleteByExample(CommentExample example);

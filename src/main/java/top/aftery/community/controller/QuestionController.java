@@ -25,7 +25,7 @@ public class QuestionController {
     private QuestionService service;
 
     @GetMapping("/question/{id}")
-    public String question(@PathVariable(value = "id") Integer id, Model model) {
+    public String question(@PathVariable(value = "id") Long id, Model model) {
         Questionuser questionuser = service.getById(id);
         if(null==questionuser){
             throw new  CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);

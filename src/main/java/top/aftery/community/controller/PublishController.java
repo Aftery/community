@@ -36,7 +36,7 @@ public class PublishController {
     }
 
     @GetMapping("/publish/{id}")
-    public String editPubish(@PathVariable(name = "id") Integer id,Model model) throws Exception {
+    public String editPubish(@PathVariable(name = "id") Long id,Model model) throws Exception {
         Questionuser questionuser = questionService.getById(id);
         if(null==questionuser){
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);

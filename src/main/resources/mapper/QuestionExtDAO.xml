@@ -98,10 +98,10 @@
         creator = #{creator,jdbcType=INTEGER},
       </if>
       <if test="commentCount != null">
-        comment_count = #{commentCount,jdbcType=INTEGER},
+        comment_count = comment_count+#{commentCount},
       </if>
       <if test="viewCount != null">
-        view_count = view_count+1,
+        view_count = view_count+#{viewCount},
       </if>
       <if test="likeCount != null">
         like_count = #{likeCount,jdbcType=INTEGER},

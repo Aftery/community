@@ -1,11 +1,12 @@
 package top.aftery.community.mapper;
 
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 import top.aftery.community.model.Questionuser;
 import top.aftery.community.model.QuestionuserExample;
 
-import java.util.List;
-
+@Repository
 public interface QuestionuserDAO {
     long countByExample(QuestionuserExample example);
 

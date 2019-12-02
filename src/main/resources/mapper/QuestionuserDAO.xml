@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="top.aftery.community.mapper.QuestionuserDAO">
   <resultMap id="BaseResultMap" type="top.aftery.community.model.Questionuser">
-    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
@@ -18,7 +18,6 @@
     <result column="user_gmt_create" jdbcType="BIGINT" property="userGmtCreate" />
     <result column="user_gmt_modified" jdbcType="BIGINT" property="userGmtModified" />
     <result column="user_avatar_url" jdbcType="VARCHAR" property="userAvatarUrl" />
-    <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="top.aftery.community.model.Questionuser">
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
@@ -84,7 +83,7 @@
   <sql id="Base_Column_List">
     id, title, gmt_create, gmt_modified, creator, comment_count, view_count, like_count, 
     tag, user_id, user_name, user_account_id, user_token, user_gmt_create, user_gmt_modified, 
-    user_avatar_url,description
+    user_avatar_url
   </sql>
   <sql id="Blob_Column_List">
     description
@@ -148,7 +147,7 @@
       user_id, user_name, user_account_id, 
       user_token, user_gmt_create, user_gmt_modified, 
       user_avatar_url, description)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, 
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{gmtCreate,jdbcType=BIGINT}, 
       #{gmtModified,jdbcType=BIGINT}, #{creator,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, 
       #{viewCount,jdbcType=INTEGER}, #{likeCount,jdbcType=INTEGER}, #{tag,jdbcType=VARCHAR}, 
       #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userAccountId,jdbcType=VARCHAR}, 
@@ -212,7 +211,7 @@
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
-        #{id,jdbcType=INTEGER},
+        #{id,jdbcType=BIGINT},
       </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
@@ -274,7 +273,7 @@
     update questionuser
     <set>
       <if test="record.id != null">
-        id = #{record.id,jdbcType=INTEGER},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.title != null">
         title = #{record.title,jdbcType=VARCHAR},
@@ -331,7 +330,7 @@
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map">
     update questionuser
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=BIGINT},
       gmt_modified = #{record.gmtModified,jdbcType=BIGINT},
@@ -354,7 +353,7 @@
   </update>
   <update id="updateByExample" parameterType="map">
     update questionuser
-    set id = #{record.id,jdbcType=INTEGER},
+    set id = #{record.id,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       gmt_create = #{record.gmtCreate,jdbcType=BIGINT},
       gmt_modified = #{record.gmtModified,jdbcType=BIGINT},
