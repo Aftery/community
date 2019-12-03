@@ -27,10 +27,11 @@ public class QuestionController {
     @GetMapping("/question/{id}")
     public String question(@PathVariable(value = "id") Long id, Model model) {
         Questionuser questionuser = service.getById(id);
-        if(null==questionuser){
-            throw new  CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        if (null == questionuser) {
+            throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
         service.incView(id);
+        log.info("\n questiobnuser:{}", questionuser);
         model.addAttribute("question", questionuser);
         return "question";
     }
