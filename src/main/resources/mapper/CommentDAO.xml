@@ -8,6 +8,7 @@
     <result column="commentator" jdbcType="INTEGER" property="commentator" />
     <result column="gmt_create" jdbcType="BIGINT" property="gmtCreate" />
     <result column="gmt_modified" jdbcType="BIGINT" property="gmtModified" />
+    <result column="like_count" jdbcType="INTEGER" property="likeCount" />
     <result column="content" jdbcType="VARCHAR" property="content" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -69,7 +70,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, parent_id, `type`, commentator, gmt_create, gmt_modified, content
+    id, parent_id, `type`, commentator, gmt_create, gmt_modified, like_count, content
   </sql>
   <select id="selectByExample" parameterType="top.aftery.community.model.CommentExample" resultMap="BaseResultMap">
     select
@@ -112,10 +113,10 @@
   <insert id="insert" parameterType="top.aftery.community.model.Comment">
     insert into comment (id, parent_id, `type`, 
       commentator, gmt_create, gmt_modified, 
-      content)
+      like_count, content)
     values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
       #{commentator,jdbcType=INTEGER}, #{gmtCreate,jdbcType=BIGINT}, #{gmtModified,jdbcType=BIGINT}, 
-      #{content,jdbcType=VARCHAR})
+      #{likeCount,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="top.aftery.community.model.Comment">
     insert into comment
@@ -137,6 +138,9 @@
       </if>
       <if test="gmtModified != null">
         gmt_modified,
+      </if>
+      <if test="likeCount != null">
+        like_count,
       </if>
       <if test="content != null">
         content,
@@ -160,6 +164,9 @@
       </if>
       <if test="gmtModified != null">
         #{gmtModified,jdbcType=BIGINT},
+      </if>
+      <if test="likeCount != null">
+        #{likeCount,jdbcType=INTEGER},
       </if>
       <if test="content != null">
         #{content,jdbcType=VARCHAR},
@@ -193,6 +200,9 @@
       <if test="record.gmtModified != null">
         gmt_modified = #{record.gmtModified,jdbcType=BIGINT},
       </if>
+      <if test="record.likeCount != null">
+        like_count = #{record.likeCount,jdbcType=INTEGER},
+      </if>
       <if test="record.content != null">
         content = #{record.content,jdbcType=VARCHAR},
       </if>
@@ -209,6 +219,7 @@
       commentator = #{record.commentator,jdbcType=INTEGER},
       gmt_create = #{record.gmtCreate,jdbcType=BIGINT},
       gmt_modified = #{record.gmtModified,jdbcType=BIGINT},
+      like_count = #{record.likeCount,jdbcType=INTEGER},
       content = #{record.content,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -232,6 +243,9 @@
       <if test="gmtModified != null">
         gmt_modified = #{gmtModified,jdbcType=BIGINT},
       </if>
+      <if test="likeCount != null">
+        like_count = #{likeCount,jdbcType=INTEGER},
+      </if>
       <if test="content != null">
         content = #{content,jdbcType=VARCHAR},
       </if>
@@ -245,6 +259,7 @@
       commentator = #{commentator,jdbcType=INTEGER},
       gmt_create = #{gmtCreate,jdbcType=BIGINT},
       gmt_modified = #{gmtModified,jdbcType=BIGINT},
+      like_count = #{likeCount,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>

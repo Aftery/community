@@ -19,10 +19,10 @@ function post() {
                 $("#comment_section").hide();
             } else {
                 if (data.code == "2003") {
-                    var isAccepted = confirm("lll");
+                    var isAccepted = confirm("你好没登陆，是否先登录?");
                     if(isAccepted){
-                        window.open("https://github.com/login/oauth/authorize?client_id=f88879001d2eec8aa7d6&redirect_uri=http://localhost:8080/callback&scope=user&state=90");
                         localStorage.setItem("closable","true");
+                        window.open("https://github.com/login/oauth/authorize?client_id=f88879001d2eec8aa7d6&redirect_uri=http://localhost:8080/callback&scope=user&state=90");
                     }
 
                 } else {

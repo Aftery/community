@@ -34,6 +34,8 @@ public class Comment implements Serializable {
      */
     private Long gmtModified;
 
+    private Integer likeCount;
+
     /**
      * 评论类容
      */
@@ -89,6 +91,14 @@ public class Comment implements Serializable {
         this.gmtModified = gmtModified;
     }
 
+    public Integer getLikeCount() {
+        return likeCount;
+    }
+
+    public void setLikeCount(Integer likeCount) {
+        this.likeCount = likeCount;
+    }
+
     public String getContent() {
         return content;
     }
@@ -115,6 +125,7 @@ public class Comment implements Serializable {
             && (this.getCommentator() == null ? other.getCommentator() == null : this.getCommentator().equals(other.getCommentator()))
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
+            && (this.getLikeCount() == null ? other.getLikeCount() == null : this.getLikeCount().equals(other.getLikeCount()))
             && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
     }
 
@@ -128,6 +139,7 @@ public class Comment implements Serializable {
         result = prime * result + ((getCommentator() == null) ? 0 : getCommentator().hashCode());
         result = prime * result + ((getGmtCreate() == null) ? 0 : getGmtCreate().hashCode());
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
+        result = prime * result + ((getLikeCount() == null) ? 0 : getLikeCount().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
         return result;
     }
@@ -144,6 +156,7 @@ public class Comment implements Serializable {
         sb.append(", commentator=").append(commentator);
         sb.append(", gmtCreate=").append(gmtCreate);
         sb.append(", gmtModified=").append(gmtModified);
+        sb.append(", likeCount=").append(likeCount);
         sb.append(", content=").append(content);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
