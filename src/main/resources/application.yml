@@ -1,6 +1,6 @@
 github:
-  clienid: f88879001d2eec8aa7d6
-  client_secret: 9e66a4970fb8da4cab2cef367f01fab59bd49bb3
+  clienid:
+  client_secret:
   redirect_uri: http://localhost:8080/callback
 spring:
   datasource:

@@ -10,12 +10,18 @@
 
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <style>
+        .jumbotron{
+            padding-left: inherit;
+        }
+
+    </style>
 </head>
 <body style="background: url('https://elasticsearch.cn/static/css/default/img/bg.jpg')">
 <div th:insert="navigation::nav"></div>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="jumbotron">
-        <h1> 出错了</h1>
+        <h1> 404</h1>
         <p th:text="${message}">你访问的地址不存在，请确认清楚^-^</p>
         <p><a class="btn btn-primary btn-lg" th:href="@{/}" role="button">返回首页</a></p>
     </div>
