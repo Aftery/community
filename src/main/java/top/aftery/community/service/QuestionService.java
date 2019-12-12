@@ -41,7 +41,9 @@ public class QuestionService {
 
     public PageInfo<Questionuser> list(Integer page, Integer size) {
         PageHelper.startPage(page, size);
-        List<Questionuser> list = questionuserDAO.selectByExample(new QuestionuserExample());
+        QuestionuserExample example = new QuestionuserExample();
+        example.setOrderByClause("gmt_create desc");
+        List<Questionuser> list = questionuserDAO.selectByExample(example);
         PageInfo<Questionuser> pageInfo = new PageInfo<Questionuser>(list);
         return pageInfo;
     }

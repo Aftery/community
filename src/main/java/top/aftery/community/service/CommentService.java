@@ -2,14 +2,10 @@ package top.aftery.community.service;
 
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.catalina.startup.RealmRuleSet;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.w3c.dom.stylesheets.LinkStyle;
-import sun.rmi.runtime.Log;
 import top.aftery.community.dto.CommentDto;
 import top.aftery.community.enums.CommenTypeEnum;
 import top.aftery.community.exception.CustomizeErrorCode;
@@ -17,7 +13,6 @@ import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.mapper.*;
 import top.aftery.community.model.*;
 
-import javax.activation.CommandMap;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +38,9 @@ public class CommentService {
     @Autowired
     private UserDAO userDAO;
 
+    @Autowired
+    private CommentExtDAO commentExtDAO;
+
 
     @Transactional
     public void insert(Comment comment) {
@@ -61,6 +59,11 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.COMMINT_NOT_FOUND);
             }
             commentDao.insertSelective(comment);
+            //增加评论数
+            Comment parentComment=new Comment();
+            parentComment.setId(comment.getParentId());
+            parentComment.setCommentCount(1);
+            commentExtDAO.incView(parentComment);
         } else {
             //回复问题
             Question question = questionDao.selectByPrimaryKey(comment.getParentId());
@@ -74,11 +77,12 @@ public class CommentService {
         }
     }
 
-    public List<CommentDto> listByQuestionId(Long id) {
+    public List<CommentDto> listByQuestionId(Long id, CommenTypeEnum commenTypeEnum) {
         CommentExample example = new CommentExample();
         example.createCriteria()
                 .andParentIdEqualTo(id)
-                .andTypeEqualTo(CommenTypeEnum.QUESTION.getType());
+                .andTypeEqualTo(commenTypeEnum.getType());
+        example.setOrderByClause("gmt_create desc");
         List<Comment> comments = commentDao.selectByExample(example);
         if (comments.size() == 0) {
             return new ArrayList<>();

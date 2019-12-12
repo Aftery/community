@@ -41,6 +41,8 @@ public class Comment implements Serializable {
      */
     private String content;
 
+    private Integer commentCount;
+
     private static final long serialVersionUID = 1L;
 
     public Long getId() {
@@ -107,6 +109,14 @@ public class Comment implements Serializable {
         this.content = content;
     }
 
+    public Integer getCommentCount() {
+        return commentCount;
+    }
+
+    public void setCommentCount(Integer commentCount) {
+        this.commentCount = commentCount;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -126,7 +136,8 @@ public class Comment implements Serializable {
             && (this.getGmtCreate() == null ? other.getGmtCreate() == null : this.getGmtCreate().equals(other.getGmtCreate()))
             && (this.getGmtModified() == null ? other.getGmtModified() == null : this.getGmtModified().equals(other.getGmtModified()))
             && (this.getLikeCount() == null ? other.getLikeCount() == null : this.getLikeCount().equals(other.getLikeCount()))
-            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()));
+            && (this.getContent() == null ? other.getContent() == null : this.getContent().equals(other.getContent()))
+            && (this.getCommentCount() == null ? other.getCommentCount() == null : this.getCommentCount().equals(other.getCommentCount()));
     }
 
     @Override
@@ -141,6 +152,7 @@ public class Comment implements Serializable {
         result = prime * result + ((getGmtModified() == null) ? 0 : getGmtModified().hashCode());
         result = prime * result + ((getLikeCount() == null) ? 0 : getLikeCount().hashCode());
         result = prime * result + ((getContent() == null) ? 0 : getContent().hashCode());
+        result = prime * result + ((getCommentCount() == null) ? 0 : getCommentCount().hashCode());
         return result;
     }
 
@@ -158,6 +170,7 @@ public class Comment implements Serializable {
         sb.append(", gmtModified=").append(gmtModified);
         sb.append(", likeCount=").append(likeCount);
         sb.append(", content=").append(content);
+        sb.append(", commentCount=").append(commentCount);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
