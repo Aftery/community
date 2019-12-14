@@ -99,5 +99,9 @@
         </set>
         where id = #{id,jdbcType=INTEGER}
     </update>
+    <select id="selectRelated" resultType="top.aftery.community.model.Question">
+        select * from
+        question where  id!=#{id} and tag regexp #{tag}
+    </select>
 
 </mapper>

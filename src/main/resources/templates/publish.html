@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/publish.css">
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="/static/bootstrap-3.3.7-dist/js/publish.js"></script>
 </head>
 <body style="background: url('https://elasticsearch.cn/static/css/default/img/bg.jpg')">
 <div th:insert="navigation::nav"></div>
@@ -14,7 +15,7 @@
     <div class="row">
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12">
             <h3><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h3>
-<!--            <span>问题</span>-->
+            <!--            <span>问题</span>-->
             <hr>
             <form action="/publish" method="post">
                 <input th:value="${id}" name="id" type="hidden">
@@ -32,7 +33,23 @@
                 <div class="form-group">
                     <label for="tag">添加标签</label>
                     <input type="text" class="form-control" id="tag" name="tag" placeholder="输入标签，以,号隔开"
-                           th:value="${tag}">
+                           th:value="${tag}" onclick="shouTag()">
+                    <div id="selectTag" class="tag-tag">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation"  th:each="selectTag,selectTagStart:${tags}" th:class="${selectTagStart.first?'active':''}">
+                                <a th:href="'#'+${selectTag.categoryName}" aria-controls="home" role="tab" data-toggle="tab" th:text="${selectTag.categoryName}"></a
+                            ></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel"  th:id="${selectTag.categoryName}" th:each="selectTag,selectTagStart:${tags}"
+                                 th:class="${selectTagStart.first?'active tab-pane':'tab-pane'}">
+                                <span class="label label-info" th:each="selectTag:${selectTag.tags}">
+                                    <span class="glyphicon glyphicon-tags" onclick="setTags(this)" th:data-tag="${selectTag}" th:text="${' '+selectTag}"></span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="container-fluid main">

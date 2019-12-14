@@ -31,6 +31,10 @@
                     <li th:if="${session.user!=null}">
                         <a href="/publish">提问</a>
                     </li>
+                    <li th:if="${session.user!=null}">
+                        <a href="/profile/replies ">Inbox <span class="badge">通知</span></a>
+                    </li>
+
                     <li th:if="${session.user==null}"><a
                             href="https://github.com/login/oauth/authorize?client_id=f88879001d2eec8aa7d6&redirect_uri=http://localhost:8080/callback&scope=user&state=90">登录</a>
                     </li>

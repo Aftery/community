@@ -1,5 +1,6 @@
 package top.aftery.community.controller;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import top.aftery.community.cache.TagCache;
 import top.aftery.community.exception.CustomizeErrorCode;
 import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.model.Question;
@@ -31,20 +33,22 @@ public class PublishController {
 
 
     @GetMapping("/publish")
-    public String publish() {
+    public String publish(Model model) {
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
     @GetMapping("/publish/{id}")
-    public String editPubish(@PathVariable(name = "id") Long id,Model model) throws Exception {
+    public String editPubish(@PathVariable(name = "id") Long id, Model model) throws Exception {
         Questionuser questionuser = questionService.getById(id);
-        if(null==questionuser){
+        if (null == questionuser) {
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
         }
         model.addAttribute("title", questionuser.getTitle());
         model.addAttribute("des", questionuser.getDescription());
         model.addAttribute("tag", questionuser.getTag());
         model.addAttribute("id", questionuser.getId());
+        model.addAttribute("tags", TagCache.get());
         return "publish";
     }
 
@@ -55,6 +59,7 @@ public class PublishController {
         model.addAttribute("title", question.getTitle());
         model.addAttribute("des", question.getDescription());
         model.addAttribute("tag", question.getTag());
+        model.addAttribute("tags", TagCache.get());
 
         if (null == question.getTitle() || "" == question.getTitle()) {
             model.addAttribute("error", "标题不能为空");
@@ -68,7 +73,11 @@ public class PublishController {
             model.addAttribute("error", "标签不能为空");
             return "publish";
         }
-
+        String invalid = TagCache.filterInvalid(question.getTag());
+        if (StrUtil.isNotEmpty(invalid)) {
+            model.addAttribute("error", "包含非法标签:：" + invalid);
+            return "publish";
+        }
 
         User user = (User) request.getSession().getAttribute("user");
         if (user == null) {

@@ -1,6 +1,7 @@
 package top.aftery.community.service;
 
 import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +27,6 @@ import java.util.List;
 @Service
 @SuppressWarnings("all")
 public class QuestionService {
-
 
 
     @Autowired
@@ -58,11 +58,12 @@ public class QuestionService {
     }
 
     public Questionuser getById(Long id) {
-        QuestionuserExample questionuserExample = new QuestionuserExample();;
+        QuestionuserExample questionuserExample = new QuestionuserExample();
+        ;
         questionuserExample.createCriteria().andIdEqualTo(id);
         List<Questionuser> list = questionuserDAO.selectByExample(questionuserExample);
 
-        if(CollUtil.isNotEmpty(list)){
+        if (CollUtil.isNotEmpty(list)) {
             Questionuser questionuser = list.get(0);
             return questionuser;
         }
@@ -85,6 +86,7 @@ public class QuestionService {
 
     /**
      * 累加阅读数
+     *
      * @param id
      */
     public void incView(Long id) {
@@ -92,5 +94,17 @@ public class QuestionService {
         record.setId(id);
         record.setViewCount(1);
         extDAO.incView(record);
+    }
+
+    public List<Question> selectRelated(Questionuser questionuser) {
+        if (StrUtil.isEmpty(questionuser.getTag())) {
+            return null;
+        }
+        String replace = StrUtil.replace(questionuser.getTag(), ",", "|");
+        Question question = new Question();
+        question.setTag(replace);
+        question.setId(questionuser.getId());
+        List<Question> questions = extDAO.selectRelated(question);
+        return questions;
     }
 }
