@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import top.aftery.community.mapper.UserDAO;
 import top.aftery.community.model.User;
 import top.aftery.community.model.UserExample;
+import top.aftery.community.service.NotificationService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -27,6 +28,9 @@ public class SessionInterceptor implements HandlerInterceptor {
     @Autowired
     private UserDAO mapper;
 
+    @Autowired
+    private NotificationService notificationService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Cookie[] cookies = request.getCookies();
@@ -42,6 +46,8 @@ public class SessionInterceptor implements HandlerInterceptor {
                         User user = users.get(0);
                         if (user != null) {
                             request.getSession().setAttribute("user", user);
+                            Long unreadCount = notificationService.unreadCount(user.getId());
+                            request.getSession().setAttribute("unreadCount", unreadCount);
                         }
                     }
 

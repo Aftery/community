@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.aftery.community.dto.CommentDto;
 import top.aftery.community.enums.CommenTypeEnum;
+import top.aftery.community.enums.NotificationTypeEnum;
+import top.aftery.community.enums.NotificationStatusEnum;
 import top.aftery.community.exception.CustomizeErrorCode;
 import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.mapper.*;
@@ -41,9 +43,12 @@ public class CommentService {
     @Autowired
     private CommentExtDAO commentExtDAO;
 
+    @Autowired
+    private NotificationDAO notificationDAO;
+
 
     @Transactional
-    public void insert(Comment comment) {
+    public void insert(Comment comment,User commentator) {
         if (null == comment.getParentId() || comment.getParentId() == 0) {
             throw new CustomizeException(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
         }
@@ -58,12 +63,21 @@ public class CommentService {
             if (null == dbComment) {
                 throw new CustomizeException(CustomizeErrorCode.COMMINT_NOT_FOUND);
             }
+            //查询问题
+            Question question = questionDao.selectByPrimaryKey(dbComment.getParentId());
+            if (null == question) {
+                throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+            }
+
+
             commentDao.insertSelective(comment);
             //增加评论数
             Comment parentComment=new Comment();
             parentComment.setId(comment.getParentId());
             parentComment.setCommentCount(1);
             commentExtDAO.incView(parentComment);
+            //通知提醒
+            createNotify(comment, dbComment.getCommentator(), commentator.getName(), question.getTitle(), NotificationTypeEnum.REPLY_COMMENT, question.getId());
         } else {
             //回复问题
             Question question = questionDao.selectByPrimaryKey(comment.getParentId());
@@ -74,7 +88,31 @@ public class CommentService {
             Question record = new Question();
             question.setCommentCount(1);
             questionExtDAO.incView(question);
+            //通知提醒
+            createNotify(comment,question.getCreator(),commentator.getName(),question.getTitle(), NotificationTypeEnum.REPLY_QUESTION, question.getId());
         }
+    }
+
+    /**
+     * 创建通知
+     * @param comment
+     * @param commentator
+     * @param name
+     * @param title
+     * @param replyComment
+     * @param parentId
+     */
+    private void createNotify(Comment comment, Integer commentator, String name, String title, NotificationTypeEnum replyComment, Long parentId) {
+        Notification record = new Notification();
+        record.setNotifier(Long.valueOf(comment.getCommentator()));
+        record.setReceiver(Long.valueOf(commentator));
+        record.setOuterid(parentId);
+        record.setType(replyComment.getType());
+        record.setGmtCreate(System.currentTimeMillis());
+        record.setStatus(NotificationStatusEnum.UNREAD.getStatus());
+        record.setNotifierName(name);
+        record.setQuterTitle(title);
+        notificationDAO.insertSelective(record);
     }
 
     public List<CommentDto> listByQuestionId(Long id, CommenTypeEnum commenTypeEnum) {

@@ -34,11 +34,10 @@ public class CommentController {
         if(comment==null || StringUtils.isEmpty(comment.getContent())){
             return  ResultDTO.errorOf(CustomizeErrorCode.CONTENT_IS_EMPTY);
         }
-        System.out.println("输出：{}" + comment);
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModified(comment.getGmtCreate());
         comment.setCommentator(user.getId());
-        commentService.insert(comment);
+        commentService.insert(comment,user);
         return ResultDTO.okOf();
     }
 
