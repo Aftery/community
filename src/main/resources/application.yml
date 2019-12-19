@@ -12,8 +12,13 @@ spring:
 #    throw-exception-if-no-handler-found: true
 logging:
   level:
-#    top.aftery.community.mapper: debug
+    #    top.aftery.community.mapper: debug
     top.aftery.community.mapper: debug
+  file:
+    #    单个日志文件最大5mb
+    max-size: 5MB
+    #最多有20（天）个日志记录
+    max-history: 20
 mybatis:
   configuration:
     map-underscore-to-camel-case: true

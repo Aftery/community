@@ -104,4 +104,14 @@
         question where  id!=#{id} and tag regexp #{tag}
     </select>
 
+    <select id="selectSearch" resultType="top.aftery.community.model.Questionuser">
+        select * from questionuser
+        <where>
+            <if test="search!=null and search!=''">
+                and title regexp #{search}
+            </if>
+
+        </where>
+    </select>
+
 </mapper>

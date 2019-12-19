@@ -39,11 +39,15 @@ public class QuestionService {
     private QuestionExtDAO extDAO;
 
 
-    public PageInfo<Questionuser> list(Integer page, Integer size) {
+    public PageInfo<Questionuser> list(String search,Integer page, Integer size) {
+        if(StrUtil.isNotEmpty(search)){
+            String replace = StrUtil.replace(search," ","|");
+        }
         PageHelper.startPage(page, size);
-        QuestionuserExample example = new QuestionuserExample();
-        example.setOrderByClause("gmt_create desc");
-        List<Questionuser> list = questionuserDAO.selectByExample(example);
+        //QuestionuserExample example = new QuestionuserExample();
+       // example.setOrderByClause("gmt_create desc");
+        List<Questionuser> list=extDAO.selectSearch(search);
+        //List<Questionuser> list = questionuserDAO.selectByExample(example);
         PageInfo<Questionuser> pageInfo = new PageInfo<Questionuser>(list);
         return pageInfo;
     }
