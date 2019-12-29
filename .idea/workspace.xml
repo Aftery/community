@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1cd72ded-d059-4ddb-a3ea-53b62c9cc47d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/logs/community.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL for 5.1 - community@127.0.0.1" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL for 5.1 - community@127.0.0.1" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="MySQL for 5.1 - community@127.0.0.1" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="community: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="community" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="Enum" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1UI7QrTMVdcddQkxhtTq4Fp1QGX" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="h2&#10;mysql" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="MyBatisLogPluginindexNum" value="1301" />
+    <property name="MyBatisLogPluginparameters" value="Parameters:" />
+    <property name="MyBatisLogPluginpreparing" value="Preparing:" />
+    <property name="MyBatisLogPluginrunning" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="database.console.LAST_STATE" value="false" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="js.last.introduce.type" value="VAR" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="top.aftery.community.cache" />
+      <recent name="top.aftery.community.interceptor" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Javadoc\community\src\main\resources\templates" />
+      <recent name="D:\Javadoc\community\src\main\resources\static\bootstrap-3.3.7-dist" />
+      <recent name="D:\Javadoc\community\src\main\resources\static\bootstrap-3.3.7-dist\css" />
+      <recent name="D:\Javadoc\community\src\main\resources\static\bootstrap-3.3.7-dist\js" />
+      <recent name="D:\Javadoc\community\src\main\resources\mapper" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="top.aftery.community.enums" />
+      <recent name="top.aftery.community.mapper" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Javadoc\community\src\main\resources\static\bootstrap-3.3.7-dist\js" />
+      <recent name="D:\Javadoc\community\src\main\resources\static" />
+      <recent name="D:\Javadoc\community\src\main\resources" />
+      <recent name="D:\Javadoc\community\src\main\resources\templates" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.CommunityApplication (1)">
+    <configuration name="community.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/main/resources/static/bootstrap-3.3.7-dist/js/community.js" working-dir="$PROJECT_DIR$/src/main/resources/static/bootstrap-3.3.7-dist/js">
+      <method v="2" />
+    </configuration>
+    <configuration name="CommunityApplication (1)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="community" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="top.aftery.community.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.aftery.community.CommunityApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CommunityApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="community" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="top.afery.community.CommunityApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Spring Boot.CommunityApplication (1)" />
+        <item itemvalue="Node.js.community.js" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <option name="contentProportion" value="0.16883117" />
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="Spring Boot" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="Not Started" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1cd72ded-d059-4ddb-a3ea-53b62c9cc47d" name="Default Changelist" comment="" />
+      <created>1573825392937</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573825392937</updated>
+      <workItem from="1573825395884" duration="1608000" />
+      <workItem from="1573905647417" duration="4066000" />
+      <workItem from="1573957243440" duration="14428000" />
+      <workItem from="1573989824542" duration="639000" />
+      <workItem from="1574079378746" duration="8442000" />
+      <workItem from="1574169306082" duration="598000" />
+      <workItem from="1574252014660" duration="5785000" />
+      <workItem from="1574339214732" duration="3793000" />
+      <workItem from="1574343050201" duration="1081000" />
+      <workItem from="1574426218005" duration="141000" />
+      <workItem from="1574426403671" duration="642000" />
+      <workItem from="1574427088407" duration="177000" />
+      <workItem from="1574474446183" duration="113000" />
+      <workItem from="1574474597639" duration="508000" />
+      <workItem from="1574475161693" duration="58000" />
+      <workItem from="1574475261935" duration="4377000" />
+      <workItem from="1574500828618" duration="954000" />
+      <workItem from="1574559869062" duration="7032000" />
+      <workItem from="1574578185264" duration="7499000" />
+      <workItem from="1574684031265" duration="9271000" />
+      <workItem from="1574769670156" duration="6447000" />
+      <workItem from="1574856602464" duration="7328000" />
+      <workItem from="1574942732735" duration="7547000" />
+      <workItem from="1575032250480" duration="799000" />
+      <workItem from="1575033067047" duration="952000" />
+      <workItem from="1575035664391" duration="569000" />
+      <workItem from="1575036276363" duration="276000" />
+      <workItem from="1575081759495" duration="3912000" />
+      <workItem from="1575111635165" duration="661000" />
+      <workItem from="1575112320495" duration="3306000" />
+      <workItem from="1575181289882" duration="878000" />
+      <workItem from="1575182191577" duration="14819000" />
+      <workItem from="1575205298315" duration="16000" />
+      <workItem from="1575205451455" duration="8000" />
+      <workItem from="1575287819805" duration="98000" />
+      <workItem from="1575287936633" duration="7968000" />
+      <workItem from="1575295937215" duration="1880000" />
+      <workItem from="1575376625623" duration="6273000" />
+      <workItem from="1575462142442" duration="14000" />
+      <workItem from="1575548369360" duration="6584000" />
+      <workItem from="1575557085025" duration="156000" />
+      <workItem from="1575557256950" duration="2644000" />
+      <workItem from="1575685499123" duration="676000" />
+      <workItem from="1575702682045" duration="6232000" />
+      <workItem from="1575893185980" duration="4051000" />
+      <workItem from="1575979080610" duration="8791000" />
+      <workItem from="1576065031771" duration="611000" />
+      <workItem from="1576152272919" duration="1937000" />
+      <workItem from="1576154561257" duration="6409000" />
+      <workItem from="1576288431954" duration="960000" />
+      <workItem from="1576290584956" duration="16827000" />
+      <workItem from="1576375465930" duration="1534000" />
+      <workItem from="1576377027694" duration="1082000" />
+      <workItem from="1576378139980" duration="9588000" />
+      <workItem from="1576496064662" duration="2245000" />
+      <workItem from="1576498682873" duration="1163000" />
+      <workItem from="1576499867737" duration="406000" />
+      <workItem from="1576500300026" duration="1293000" />
+      <workItem from="1576501620980" duration="1356000" />
+      <workItem from="1576504075505" duration="2103000" />
+      <workItem from="1576675693509" duration="88000" />
+      <workItem from="1576757710845" duration="5263000" />
+      <workItem from="1576763423647" duration="1130000" />
+      <workItem from="1577614947398" duration="264000" />
+    </task>
+    <task id="LOCAL-00001" summary="1">
+      <created>1573910091855</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573910091855</updated>
+    </task>
+    <task id="LOCAL-00002" summary="github access_token">
+      <created>1573980319290</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573980319290</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add mybatis">
+      <created>1574083421933</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1574083421933</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add publish">
+      <created>1574089816474</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1574089816474</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add publish">
+      <created>1574256710509</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1574256710509</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add publish">
+      <created>1574343412692</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1574343412692</updated>
+    </task>
+    <task id="LOCAL-00007" summary=":art:">
+      <created>1574501167694</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1574501167694</updated>
+    </task>
+    <task id="LOCAL-00008" summary=":art: 拦截器添加">
+      <created>1574582550640</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574582550640</updated>
+    </task>
+    <task id="LOCAL-00009" summary=":art: 分页">
+      <created>1574586928041</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1574586928041</updated>
+    </task>
+    <task id="LOCAL-00010" summary=":sparkles: 引入 pageHelper分页">
+      <created>1574692973355</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1574692973355</updated>
+    </task>
+    <task id="LOCAL-00011" summary=":wrench: 去除多余代码">
+      <created>1574693339158</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1574693339158</updated>
+    </task>
+    <task id="LOCAL-00012" summary=":bug: 修复登录用户重复插入">
+      <created>1574774939323</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1574774939324</updated>
+    </task>
+    <task id="LOCAL-00013" summary=":sparkles: 增加修改问题">
+      <created>1574776976099</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1574776976099</updated>
+    </task>
+    <task id="LOCAL-00014" summary=":sparkles: 增加错误页面(待修复错误拦截)">
+      <created>1574867428611</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1574867428611</updated>
+    </task>
+    <task id="LOCAL-00015" summary=":sparkles:修复错误拦截">
+      <created>1574952594561</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1574952594561</updated>
+    </task>
+    <task id="LOCAL-00016" summary=":art: mybatis逆向工程">
+      <created>1575188659564</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1575188659564</updated>
+    </task>
+    <task id="LOCAL-00017" summary=":sparkles: 增加阅读数">
+      <created>1575194336761</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1575194336761</updated>
+    </task>
+    <task id="LOCAL-00018" summary=":sparkles: 问题回复">
+      <created>1575197154802</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1575197154802</updated>
+    </task>
+    <task id="LOCAL-00019" summary=":sparkles: 问题评论，评论数刷新🔒">
+      <created>1575297783858</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1575297783858</updated>
+    </task>
+    <task id="LOCAL-00020" summary=":sparkles: 评论回复，验证">
+      <created>1575384680863</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1575384680863</updated>
+    </task>
+    <task id="LOCAL-00021" summary="del">
+      <created>1575384728273</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1575384728273</updated>
+    </task>
+    <task id="LOCAL-00022" summary=":lipstick: 回复展示">
+      <created>1575559845352</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1575559845352</updated>
+    </task>
+    <task id="LOCAL-00023" summary=":lipstick: 更新评论回复显示">
+      <created>1576160705795</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1576160705795</updated>
+    </task>
+    <task id="LOCAL-00024" summary=":sparkles:评论回复">
+      <created>1576160935977</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1576160935977</updated>
+    </task>
+    <task id="LOCAL-00025" summary=":sparkles:限制标签">
+      <created>1576321770026</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1576321770026</updated>
+    </task>
+    <task id="LOCAL-00026" summary=":bento: 引入editor.md">
+      <created>1576506068175</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1576506068175</updated>
+    </task>
+    <task id="LOCAL-00027" summary=":sparkles: 支持md语法和图片">
+      <created>1576506189686</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1576506189686</updated>
+    </task>
+    <task id="LOCAL-00028" summary=":sparkles: 搜索和添加日志记录">
+      <created>1576763937892</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1576763937892</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="SHOW_DIRTY_RECURSIVELY" value="true" />
+    <MESSAGE value="github access_token" />
+    <MESSAGE value="add mybatis" />
+    <MESSAGE value="add publish" />
+    <MESSAGE value=":art:" />
+    <MESSAGE value=":art: 拦截器添加" />
+    <MESSAGE value=":art: 分页" />
+    <MESSAGE value=":sparkles: 引入 pageHelper分页" />
+    <MESSAGE value=":wrench: 去除多余代码" />
+    <MESSAGE value=":bug: 修复登录用户重复插入" />
+    <MESSAGE value=":sparkles: 增加修改问题" />
+    <MESSAGE value=":sparkles: 增加错误页面(待修复错误拦截)" />
+    <MESSAGE value=":sparkles:修复错误拦截" />
+    <MESSAGE value=":art: mybatis逆向工程" />
+    <MESSAGE value=":sparkles: 增加阅读数" />
+    <MESSAGE value=":sparkles: 问题回复" />
+    <MESSAGE value=":sparkles: 问题评论，评论数刷新" />
+    <MESSAGE value=":sparkles: 评论回复，验证" />
+    <MESSAGE value="del" />
+    <MESSAGE value=":lipstick: 回复展示" />
+    <MESSAGE value=":lipstick: 更新评论回复显示" />
+    <MESSAGE value=":sparkles:评论回复" />
+    <MESSAGE value=":sparkles:限制标签" />
+    <MESSAGE value=":bento: 引入editor.md" />
+    <MESSAGE value=":sparkles: 支持md语法和图片" />
+    <MESSAGE value=":sparkles: 搜索和添加日志记录" />
+    <option name="LAST_COMMIT_MESSAGE" value=":sparkles: 搜索和添加日志记录" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="185" key="#HTTP_Proxy" timestamp="1575036183306">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="552" y="185" key="#HTTP_Proxy/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575036183306" />
+    <state x="552" y="182" key="#Project_Structure" timestamp="1575082118460">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="552" y="182" key="#Project_Structure/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575082118460" />
+    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser" timestamp="1576377581434">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="765" y="225" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576377581434" />
+    <state x="811" y="416" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1575032678025">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="811" y="416" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575032678025" />
+    <state x="540" y="182" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor" timestamp="1575032675356">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="540" y="182" key="#com.intellij.openapi.projectRoots.ui.ProjectJdksEditor/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575032675356" />
+    <state x="365" y="214" width="1058" height="547" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576496075222">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="365" y="214" width="1058" height="547" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576496075222" />
+    <state x="584" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1576376242485">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="584" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576376242485" />
+    <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1575183657165">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="690" y="270" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575183657165" />
+    <state x="815" y="226" key="#xdebugger.evaluate" timestamp="1576293600546">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="815" y="226" key="#xdebugger.evaluate/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576293600546" />
+    <state x="560" y="116" key="CommitChangelistDialog2" timestamp="1576763931705">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="560" y="116" key="CommitChangelistDialog2/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763931705" />
+    <state x="640" y="329" key="DUMP_DIALOG_DIMENSION_KEY" timestamp="1575896762259">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="640" y="329" key="DUMP_DIALOG_DIMENSION_KEY/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575896762259" />
+    <state width="421" height="466" key="DebuggerActiveHint" timestamp="1576311009719">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="421" height="466" key="DebuggerActiveHint/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576311009719" />
+    <state x="92" y="92" width="1736" height="864" key="DiffContextDialog" timestamp="1576158481424">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="92" y="92" width="1736" height="864" key="DiffContextDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576158481424" />
+    <state x="740" y="282" key="FileChooserDialogImpl" timestamp="1575032672913">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="740" y="282" key="FileChooserDialogImpl/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575032672913" />
+    <state width="1535" height="225" key="GridCell.Tab.0.bottom" timestamp="1576763401959">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.0.bottom/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401959" />
+    <state width="1535" height="225" key="GridCell.Tab.0.center" timestamp="1576763401959">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.0.center/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401959" />
+    <state width="1535" height="225" key="GridCell.Tab.0.left" timestamp="1576763401958">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.0.left/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401958" />
+    <state width="1535" height="225" key="GridCell.Tab.0.right" timestamp="1576763401959">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.0.right/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401959" />
+    <state width="1535" height="225" key="GridCell.Tab.1.bottom" timestamp="1576763401959">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.1.bottom/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401959" />
+    <state width="1535" height="225" key="GridCell.Tab.1.center" timestamp="1576763401959">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.1.center/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401959" />
+    <state width="1535" height="225" key="GridCell.Tab.1.left" timestamp="1576763401959">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.1.left/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401959" />
+    <state width="1535" height="225" key="GridCell.Tab.1.right" timestamp="1576763401959">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="225" key="GridCell.Tab.1.right/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763401959" />
+    <state width="1535" height="310" key="GridCell.Tab.2.bottom" timestamp="1576311036893">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="310" key="GridCell.Tab.2.bottom/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576311036893" />
+    <state width="1535" height="310" key="GridCell.Tab.2.center" timestamp="1576311036891">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="310" key="GridCell.Tab.2.center/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576311036891" />
+    <state width="1535" height="310" key="GridCell.Tab.2.left" timestamp="1576311036891">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="310" key="GridCell.Tab.2.left/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576311036891" />
+    <state width="1535" height="310" key="GridCell.Tab.2.right" timestamp="1576311036893">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="1535" height="310" key="GridCell.Tab.2.right/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576311036893" />
+    <state width="220" height="477" key="HiddenNamespacesPopup" timestamp="1575896704220">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575896704220" />
+    <state x="476" y="147" key="SettingsEditor" timestamp="1577615188814">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="476" y="147" key="SettingsEditor/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576380682679" />
+    <state x="476" y="147" key="SettingsEditor/0.0.1920.1048@0.0.1920.1048" timestamp="1577615188814" />
+    <state width="515" height="519" key="SwitcherDM" timestamp="1576397429274">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state width="515" height="519" key="SwitcherDM/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576397429274" />
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2" timestamp="1576763950026">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="552" y="257" key="Vcs.Push.Dialog.v2/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763950026" />
+    <state x="502" y="348" key="com.intellij.ide.util.TipDialog" timestamp="1575036273171">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="502" y="348" key="com.intellij.ide.util.TipDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575036273171" />
+    <state x="511" y="260" width="898" height="615" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1576759050903">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="511" y="260" width="898" height="615" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576759050903" />
+    <state x="690" y="277" key="extract.method.dialog" timestamp="1576377923431">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="690" y="277" key="extract.method.dialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576377923431" />
+    <state x="567" y="231" width="786" height="586" key="find.popup" timestamp="1576760517718">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="567" y="231" width="786" height="586" key="find.popup/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576760517718" />
+    <state x="676" y="326" key="git4idea.merge.GitPullDialog" timestamp="1575287837561">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="676" y="326" key="git4idea.merge.GitPullDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575287837561" />
+    <state x="601" y="250" width="700" height="530" key="recent.locations.popup" timestamp="1575552145745">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="601" y="250" width="700" height="530" key="recent.locations.popup/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1575552145745" />
+    <state x="702" y="141" key="refactoring.ChangeSignatureDialog" timestamp="1576394242269">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="702" y="141" key="refactoring.ChangeSignatureDialog/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576394242269" />
+    <state x="616" y="242" key="run.anything.popup" timestamp="1576397432763">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="616" y="242" key="run.anything.popup/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576397432763" />
+    <state x="616" y="177" width="672" height="676" key="search.everywhere.popup" timestamp="1576763507536">
+      <screen x="0" y="0" width="1920" height="1048" />
+    </state>
+    <state x="616" y="177" width="672" height="676" key="search.everywhere.popup/0.0.1920.1048/1920.0.1920.1050@0.0.1920.1048" timestamp="1576763507536" />
+  </component>
+</project>

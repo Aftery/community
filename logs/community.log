@@ -1,0 +1,14 @@
+2019-12-19 21:41:56.944  INFO 8528 --- [restartedMain] t.aftery.community.CommunityApplication  : Starting CommunityApplication on DESKTOP-RKMU2BV with PID 8528 (D:\Javadoc\community\target\classes started by Aftery in D:\Javadoc\community)
+2019-12-19 21:41:56.949  INFO 8528 --- [restartedMain] t.aftery.community.CommunityApplication  : No active profile set, falling back to default profiles: default
+2019-12-19 21:41:57.020  INFO 8528 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2019-12-19 21:41:57.021  INFO 8528 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2019-12-19 21:41:58.516  INFO 8528 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-12-19 21:41:58.534  INFO 8528 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-12-19 21:41:58.535  INFO 8528 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.17]
+2019-12-19 21:41:58.650  INFO 8528 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-12-19 21:41:58.650  INFO 8528 --- [restartedMain] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1628 ms
+2019-12-19 21:41:59.149  INFO 8528 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-12-19 21:41:59.252  INFO 8528 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2019-12-19 21:41:59.457  INFO 8528 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2019-12-19 21:41:59.499  INFO 8528 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-12-19 21:41:59.502  INFO 8528 --- [restartedMain] t.aftery.community.CommunityApplication  : Started CommunityApplication in 3.077 seconds (JVM running for 4.796)
