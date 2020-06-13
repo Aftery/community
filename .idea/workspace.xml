@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cd72ded-d059-4ddb-a3ea-53b62c9cc47d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/community.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +92,7 @@
     <property name="database.console.LAST_STATE" value="false" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="js.last.introduce.type" value="VAR" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -264,6 +264,7 @@
       <workItem from="1576757710845" duration="5263000" />
       <workItem from="1576763423647" duration="1130000" />
       <workItem from="1577614947398" duration="264000" />
+      <workItem from="1592044669031" duration="393000" />
     </task>
     <task id="LOCAL-00001" summary="1">
       <created>1573910091855</created>
