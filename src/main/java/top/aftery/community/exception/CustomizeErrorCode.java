@@ -18,6 +18,7 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode {
     CONTENT_IS_EMPTY(2007, "回复的评论不能为空"),
     READ_NOTIFICATION_FAIL(2008, "醒醒吧!!!你查看的别人的信息"),
     NOTIFCATION_NOT_FAIL(2009, "消息莫非被吃了!!!"),
+    EDIT_QUESTION_NO_PERMISSION(2010, "你只能编辑自己发布的问题"),
     ;
 
     private String message;

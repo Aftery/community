@@ -46,7 +46,7 @@ public class NotificationService {
         if (notification == null) {
             throw new CustomizeException(CustomizeErrorCode.NOTIFCATION_NOT_FAIL);
         }
-        if (notification.getReceiver() != Long.valueOf(user.getId())) {
+        if (notification.getReceiver() == null || notification.getReceiver().longValue() != user.getId().longValue()) {
             throw new CustomizeException(CustomizeErrorCode.READ_NOTIFICATION_FAIL);
         }
         notification.setStatus(NotificationStatusEnum.READ.getStatus());

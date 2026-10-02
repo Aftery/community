@@ -1,12 +1,12 @@
 github:
-  clienid:
-  client_secret:
-  redirect_uri: http://localhost:8080/callback
+  clienid: ${GITHUB_CLIENT_ID:}
+  client_secret: ${GITHUB_CLIENT_SECRET:}
+  redirect_uri: ${GITHUB_REDIRECT_URI:http://localhost:8080/callback}
 spring:
   datasource:
-    url: jdbc:mysql:///community?useUnicode=true&characterEncoding=utf-8&useSSL=false
-    password: 12345678
-    username: root
+    url: ${DB_URL:jdbc:mysql:///community?useUnicode=true&characterEncoding=utf-8&useSSL=false}
+    password: ${DB_PASSWORD:}
+    username: ${DB_USERNAME:root}
     driver-class-name: com.mysql.jdbc.Driver
 #  mvc:
 #    throw-exception-if-no-handler-found: true

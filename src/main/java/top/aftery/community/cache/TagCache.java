@@ -1,11 +1,9 @@
 package top.aftery.community.cache;
 
 import cn.hutool.core.util.ArrayUtil;
-import cn.hutool.core.util.StrUtil;
 import org.springframework.util.StringUtils;
 import top.aftery.community.dto.TagDTO;
 
-import java.sql.Struct;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;

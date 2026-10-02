@@ -86,8 +86,9 @@ public class CommentService {
             }
             commentDao.insertSelective(comment);
             Question record = new Question();
-            question.setCommentCount(1);
-            questionExtDAO.incView(question);
+            record.setId(question.getId());
+            record.setCommentCount(1);
+            questionExtDAO.incView(record);
             //通知提醒
             createNotify(comment,question.getCreator(),commentator.getName(),question.getTitle(), NotificationTypeEnum.REPLY_QUESTION, question.getId());
         }

@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import top.aftery.community.dto.NotificationDTO;
-import top.aftery.community.enums.NotificationTypeEnum;
 import top.aftery.community.model.Notification;
 import top.aftery.community.model.Questionuser;
 import top.aftery.community.model.User;
@@ -51,8 +50,6 @@ public class ProfileController {
             model.addAttribute("pageInfo", pageInfo);
         } else if ("replies".equals(action)) {
             PageInfo<Notification> pageInfo = notificationService.list(user.getId(), page, size);
-//            Long unreadCount = notificationService.unreadCount(user.getId());
-//            model.addAttribute("unreadCount", unreadCount);
             model.addAttribute("pageInfo", pageInfo);
             model.addAttribute("section", "replies");
             model.addAttribute("sectionName", "最新回复");

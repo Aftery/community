@@ -1,8 +1,7 @@
 package top.aftery.community.advice;
 
+import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
-import com.sun.org.apache.regexp.internal.RE;
-import com.sun.org.apache.regexp.internal.REUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -15,7 +14,6 @@ import top.aftery.community.exception.CustomizeException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 /*
  *
  * @Author Aftery
@@ -30,32 +28,28 @@ public class CustomizeExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     ModelAndView handle(HttpServletRequest request, Exception e, Model model, HttpServletResponse response) {
         String contentType = request.getContentType();
-        if ("application/json".equals(contentType)) {
-            ResultDTO resultDTO = null;
-            if (e instanceof CustomizeException) {
-                resultDTO = resultDTO.errorOf(((CustomizeException) e));
-            } else {
-                resultDTO = resultDTO.errorOf(CustomizeErrorCode.SYS_ERROR);
+        if (StrUtil.startWithIgnoreCase(contentType, "application/json")) {
+            ResultDTO resultDTO = e instanceof CustomizeException
+                    ? ResultDTO.errorOf((CustomizeException) e)
+                    : ResultDTO.errorOf(CustomizeErrorCode.SYS_ERROR);
+            if (!(e instanceof CustomizeException)) {
+                log.error("非预期异常", e);
             }
-            PrintWriter writer = null;
             try {
                 response.setCharacterEncoding("utf-8");
                 response.setStatus(200);
                 response.setContentType("application/json");
-                writer = response.getWriter();
-                writer.write(JSONUtil.toJsonStr(resultDTO));
-                writer.close();
+                response.getWriter().write(JSONUtil.toJsonStr(resultDTO));
             } catch (IOException ex) {
-                ex.printStackTrace();
+                log.error("写响应失败", ex);
             }
             return null;
         } else {
             if (e instanceof CustomizeException) {
-                model.addAttribute("message", e.getMessage());
-                return new ModelAndView("error/400");
+                return new ModelAndView("error/400", "message", e.getMessage());
             } else {
-                model.addAttribute("message", "哎呀，可能访问人数过多，请稍后再试!");
-                return new ModelAndView("error/500");
+                log.error("非预期异常", e);
+                return new ModelAndView("error/500", "message", "哎呀，可能访问人数过多，请稍后再试!");
             }
         }
 

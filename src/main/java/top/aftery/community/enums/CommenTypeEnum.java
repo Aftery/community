@@ -1,7 +1,5 @@
 package top.aftery.community.enums;
 
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
 /**
  * aftery
  * by 2019-12-2

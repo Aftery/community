@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,10 +40,13 @@ public class PublishController {
     }
 
     @GetMapping("/publish/{id}")
-    public String editPubish(@PathVariable(name = "id") Long id, Model model) throws Exception {
+    public String editPubish(@PathVariable(name = "id") Long id, Model model, HttpServletRequest request) throws Exception {
         Questionuser questionuser = questionService.getById(id);
         if (null == questionuser) {
             throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
+        }
+        if (!isOwner(questionuser, request)) {
+            throw new CustomizeException(CustomizeErrorCode.EDIT_QUESTION_NO_PERMISSION);
         }
         model.addAttribute("title", questionuser.getTitle());
         model.addAttribute("des", questionuser.getDescription());
@@ -61,15 +65,25 @@ public class PublishController {
         model.addAttribute("tag", question.getTag());
         model.addAttribute("tags", TagCache.get());
 
-        if (null == question.getTitle() || "" == question.getTitle()) {
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            model.addAttribute("error", "用户未登录");
+            return "publish";
+        }
+        //编辑时只允许改自己的问题，插入时 creator 由当前登录用户决定
+        if (question.getId() != null && !isOwner(questionService.getById(question.getId()), request)) {
+            model.addAttribute("error", "你只能编辑自己发布的问题");
+            return "publish";
+        }
+        if (StringUtils.isEmpty(question.getTitle())) {
             model.addAttribute("error", "标题不能为空");
             return "publish";
         }
-        if (null == question.getDescription() || "" == question.getDescription()) {
+        if (StringUtils.isEmpty(question.getDescription())) {
             model.addAttribute("error", "问题补充不能为空");
             return "publish";
         }
-        if (null == question.getTag() || "" == question.getTag()) {
+        if (StringUtils.isEmpty(question.getTag())) {
             model.addAttribute("error", "标签不能为空");
             return "publish";
         }
@@ -78,16 +92,20 @@ public class PublishController {
             model.addAttribute("error", "包含非法标签:：" + invalid);
             return "publish";
         }
-
-        User user = (User) request.getSession().getAttribute("user");
-        if (user == null) {
-            model.addAttribute("error", "用户未登录");
-            return "publish";
-        }
         question.setCreator(user.getId());
 
         questionService.saveOrUpdate(question);
         return "redirect:/";
+    }
+
+    /**
+     * 校验当前登录用户是否为该问题的作者。未登录一律视为无权。
+     */
+    private boolean isOwner(Questionuser questionuser, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("user");
+        return questionuser != null && user != null
+                && questionuser.getCreator() != null
+                && questionuser.getCreator().intValue() == user.getId().intValue();
     }
 
 }

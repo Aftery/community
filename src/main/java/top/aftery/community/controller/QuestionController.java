@@ -44,7 +44,7 @@ public class QuestionController {
         List<CommentDto> comments =commentService.listByQuestionId(id, CommenTypeEnum.QUESTION);
         //累计阅读列表
         service.incView(id);
-        log.info("\n questiobnuser:{}", questionuser);
+        log.info("\n questionuser:{}", questionuser);
         model.addAttribute("question", questionuser);
         model.addAttribute("comments", comments);
         model.addAttribute("relatedQuestions",relatedQuestions);

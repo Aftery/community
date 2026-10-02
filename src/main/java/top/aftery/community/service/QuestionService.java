@@ -16,7 +16,11 @@ import top.aftery.community.model.Question;
 import top.aftery.community.model.Questionuser;
 import top.aftery.community.model.QuestionuserExample;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * @Author Aftery
@@ -28,6 +32,8 @@ import java.util.List;
 @SuppressWarnings("all")
 public class QuestionService {
 
+    /** 搜索词里需要转义的正则元字符（不含 |，那是多关键词或的分隔符） */
+    private static final Pattern REGEX_META = Pattern.compile("([.\\\\+*?\\[\\](){}|^$])");
 
     @Autowired
     private QuestionuserDAO questionuserDAO;
@@ -40,16 +46,24 @@ public class QuestionService {
 
 
     public PageInfo<Questionuser> list(String search,Integer page, Integer size) {
-        if(StrUtil.isNotEmpty(search)){
-            String replace = StrUtil.replace(search," ","|");
-        }
         PageHelper.startPage(page, size);
-        //QuestionuserExample example = new QuestionuserExample();
-       // example.setOrderByClause("gmt_create desc");
-        List<Questionuser> list=extDAO.selectSearch(search);
-        //List<Questionuser> list = questionuserDAO.selectByExample(example);
-        PageInfo<Questionuser> pageInfo = new PageInfo<Questionuser>(list);
+        List<Questionuser> list = extDAO.selectSearch(toRegexKeyword(search));
+        PageInfo<Questionuser> pageInfo = new PageInfo<>(list);
         return pageInfo;
+    }
+
+    /**
+     * 把搜索词转成 SQL regexp 的多关键词或匹配模式。
+     * 先按空白分词，再转义正则元字符——否则用户搜 "(" 之类残缺正则会让整条 SQL 报错。
+     * MySQL REGEXP 不支持 {@code \Q...\E}，所以手工加反斜杠。
+     */
+    static String toRegexKeyword(String search) {
+        if (StrUtil.isBlank(search)) {
+            return null;
+        }
+        return Arrays.stream(search.trim().split("\\s+"))
+                .map(word -> REGEX_META.matcher(word).replaceAll("\\\\$1"))
+                .collect(Collectors.joining("|"));
     }
 
     public PageInfo<Questionuser> listUser(Integer userId, Integer page, Integer size) {
@@ -63,7 +77,6 @@ public class QuestionService {
 
     public Questionuser getById(Long id) {
         QuestionuserExample questionuserExample = new QuestionuserExample();
-        ;
         questionuserExample.createCriteria().andIdEqualTo(id);
         List<Questionuser> list = questionuserDAO.selectByExample(questionuserExample);
 
@@ -81,8 +94,9 @@ public class QuestionService {
             questionDAO.insertSelective(question);
         } else {
             question.setGmtModified(System.currentTimeMillis());
-            int sun = questionDAO.updateByPrimaryKeySelective(question);
-            if (sun < 0) {
+            int rows = questionDAO.updateByPrimaryKeySelective(question);
+            // 无匹配行时返回 0 而不是负数
+            if (rows == 0) {
                 throw new CustomizeException(CustomizeErrorCode.QUESTION_NOT_FOUND);
             }
         }
@@ -102,7 +116,7 @@ public class QuestionService {
 
     public List<Question> selectRelated(Questionuser questionuser) {
         if (StrUtil.isEmpty(questionuser.getTag())) {
-            return null;
+            return Collections.emptyList();
         }
         String replace = StrUtil.replace(questionuser.getTag(), ",", "|");
         Question question = new Question();

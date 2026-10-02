@@ -1,5 +1,6 @@
 package top.aftery.community.controller;
 
+import cn.hutool.core.util.StrUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,6 +53,9 @@ public class AuthorizeController {
         accessTockenDTO.setRedirect_uri(redirectUri);
         accessTockenDTO.setState(state);
         String accessTocken = provider.getAccessTocken(accessTockenDTO);
+        if (StrUtil.isEmpty(accessTocken)) {
+            return "redirect:/";
+        }
         GithubUser githubUser = provider.getUser(accessTocken);
         log.info("\n {}", githubUser);
         if (githubUser != null) {
@@ -61,7 +65,7 @@ public class AuthorizeController {
             user.setToken(UUID.randomUUID().toString());
             user.setAvatarUrl(githubUser.getAvatar_url());
             userService.saveOrUpdate(user);
-            response.addCookie(new Cookie("token", user.getToken()));
+            response.addCookie(buildTokenCookie(user.getToken(), -1));
             return "redirect:/";
         } else {
             return "redirect:/";
@@ -73,11 +77,18 @@ public class AuthorizeController {
         Object user = request.getSession().getAttribute("user");
         if (user != null) {
             request.getSession().removeAttribute("user");
-            Cookie cookie = new Cookie("token", "");
-            response.addCookie(cookie);
-            cookie.setMaxAge(0);
+            // maxAge 必须在 addCookie 之前设置：addCookie 会立刻把 cookie 序列化写入响应头
+            response.addCookie(buildTokenCookie("", 0));
         }
         return "redirect:/";
+    }
+
+    private Cookie buildTokenCookie(String value, int maxAge) {
+        Cookie cookie = new Cookie("token", value);
+        cookie.setPath("/");
+        cookie.setHttpOnly(true);
+        cookie.setMaxAge(maxAge);
+        return cookie;
     }
 
 }
