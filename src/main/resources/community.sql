@@ -1,18 +1,8 @@
-/*
-Navicat MySQL Data Transfer
+-- 1. 确保创建并切换到正确的数据库
+CREATE DATABASE IF NOT EXISTS `community` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `community`;
 
-Source Server         : 127.0.0.1
-Source Server Version : 50725
-Source Host           : localhost:3306
-Source Database       : community
-
-Target Server Type    : MYSQL
-Target Server Version : 50725
-File Encoding         : 65001
-
-Date: 2019-12-02 22:41:35
-*/
-
+-- 2. 关闭外键检查以防止清空表时报错
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
@@ -20,14 +10,14 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `comment`;
 CREATE TABLE `comment` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `parent_id` bigint(20) DEFAULT NULL COMMENT '父类id',
-  `type` int(11) DEFAULT NULL COMMENT '父类类型',
-  `commentator` int(11) DEFAULT NULL COMMENT '评论人id',
-  `gmt_create` bigint(20) DEFAULT NULL COMMENT '评论时间',
-  `gmt_modified` bigint(20) DEFAULT NULL COMMENT '更新时间',
-  `content` varchar(1024) DEFAULT NULL COMMENT '评论类容',
-  PRIMARY KEY (`id`)
+                           `id` bigint(20) NOT NULL AUTO_INCREMENT,
+                           `parent_id` bigint(20) DEFAULT NULL COMMENT '父类id',
+                           `type` int(11) DEFAULT NULL COMMENT '父类类型',
+                           `commentator` int(11) DEFAULT NULL COMMENT '评论人id',
+                           `gmt_create` bigint(20) DEFAULT NULL COMMENT '评论时间',
+                           `gmt_modified` bigint(20) DEFAULT NULL COMMENT '更新时间',
+                           `content` varchar(1024) DEFAULT NULL COMMENT '评论类容',
+                           PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -42,17 +32,17 @@ INSERT INTO `comment` VALUES ('3', '22', '1', '26', '1575297509385', '1575297509
 -- ----------------------------
 DROP TABLE IF EXISTS `question`;
 CREATE TABLE `question` (
-  `id` bigint(11) NOT NULL AUTO_INCREMENT,
-  `title` varchar(50) DEFAULT NULL,
-  `description` text,
-  `gmt_create` bigint(20) DEFAULT NULL,
-  `gmt_modified` bigint(20) DEFAULT NULL,
-  `creator` int(11) DEFAULT NULL,
-  `comment_count` int(11) DEFAULT '0',
-  `view_count` int(11) DEFAULT '0',
-  `like_count` int(11) DEFAULT '0',
-  `tag` varchar(256) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+                            `id` bigint(11) NOT NULL AUTO_INCREMENT,
+                            `title` varchar(50) DEFAULT NULL,
+                            `description` text,
+                            `gmt_create` bigint(20) DEFAULT NULL,
+                            `gmt_modified` bigint(20) DEFAULT NULL,
+                            `creator` int(11) DEFAULT NULL,
+                            `comment_count` int(11) DEFAULT '0',
+                            `view_count` int(11) DEFAULT '0',
+                            `like_count` int(11) DEFAULT '0',
+                            `tag` varchar(256) DEFAULT NULL,
+                            PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -69,14 +59,14 @@ INSERT INTO `question` VALUES ('26', '323去', '电风扇电风扇', '1575191312
 -- ----------------------------
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  `account_id` varchar(100) DEFAULT NULL,
-  `token` char(50) DEFAULT NULL,
-  `gmt_create` bigint(19) DEFAULT NULL,
-  `gmt_modified` bigint(19) DEFAULT NULL,
-  `avatar_url` varchar(255) DEFAULT NULL COMMENT '用户头像',
-  PRIMARY KEY (`id`)
+                        `id` int(11) NOT NULL AUTO_INCREMENT,
+                        `name` varchar(50) DEFAULT NULL,
+                        `account_id` varchar(100) DEFAULT NULL,
+                        `token` char(50) DEFAULT NULL,
+                        `gmt_create` bigint(19) DEFAULT NULL,
+                        `gmt_modified` bigint(19) DEFAULT NULL,
+                        `avatar_url` varchar(255) DEFAULT NULL COMMENT '用户头像',
+                        PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
@@ -88,4 +78,27 @@ INSERT INTO `user` VALUES ('26', 'Aftery', '37588923', 'e1ec4f5b-6ead-46a1-979d-
 -- View structure for questionuser
 -- ----------------------------
 DROP VIEW IF EXISTS `questionuser`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `questionuser` AS select `question`.`id` AS `id`,`question`.`title` AS `title`,`question`.`description` AS `description`,`question`.`gmt_create` AS `gmt_create`,`question`.`gmt_modified` AS `gmt_modified`,`question`.`creator` AS `creator`,`question`.`comment_count` AS `comment_count`,`question`.`view_count` AS `view_count`,`question`.`like_count` AS `like_count`,`question`.`tag` AS `tag`,`user`.`id` AS `user_id`,`user`.`name` AS `user_name`,`user`.`account_id` AS `user_account_id`,`user`.`token` AS `user_token`,`user`.`gmt_create` AS `user_gmt_create`,`user`.`gmt_modified` AS `user_gmt_modified`,`user`.`avatar_url` AS `user_avatar_url` from (`question` join `user` on((`question`.`creator` = `user`.`id`))) ;
+-- 注意：这里去除了 DEFINER 限制，防止因数据库用户权限不一致导致报错
+CREATE VIEW `questionuser` AS
+select
+    `question`.`id` AS `id`,
+    `question`.`title` AS `title`,
+    `question`.`description` AS `description`,
+    `question`.`gmt_create` AS `gmt_create`,
+    `question`.`gmt_modified` AS `gmt_modified`,
+    `question`.`creator` AS `creator`,
+    `question`.`comment_count` AS `comment_count`,
+    `question`.`view_count` AS `view_count`,
+    `question`.`like_count` AS `like_count`,
+    `question`.`tag` AS `tag`,
+    `user`.`id` AS `user_id`,
+    `user`.`name` AS `user_name`,
+    `user`.`account_id` AS `user_account_id`,
+    `user`.`token` AS `user_token`,
+    `user`.`gmt_create` AS `user_gmt_create`,
+    `user`.`gmt_modified` AS `user_gmt_modified`,
+    `user`.`avatar_url` AS `user_avatar_url`
+from (`question` join `user` on((`question`.`creator` = `user`.`id`)));
+
+-- 3. 恢复外键检查
+SET FOREIGN_KEY_CHECKS=1;

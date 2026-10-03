@@ -1,12 +1,13 @@
 github:
-  clienid: ${GITHUB_CLIENT_ID:}
-  client_secret: ${GITHUB_CLIENT_SECRET:}
-  redirect_uri: ${GITHUB_REDIRECT_URI:http://localhost:8080/callback}
+  clienid:
+  client_secret:
+  redirect_uri: http://localhost:8080/callback
 spring:
+  # 账号密码等本地连接信息放在 application-local.yml，该文件不纳入版本管理
+  profiles:
+    active: local
   datasource:
-    url: ${DB_URL:jdbc:mysql:///community?useUnicode=true&characterEncoding=utf-8&useSSL=false}
-    password: ${DB_PASSWORD:}
-    username: ${DB_USERNAME:root}
+    url: jdbc:mysql:///community?useUnicode=true&characterEncoding=utf-8&useSSL=false
     driver-class-name: com.mysql.jdbc.Driver
 #  mvc:
 #    throw-exception-if-no-handler-found: true

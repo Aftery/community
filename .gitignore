@@ -36,3 +36,6 @@ build/
 /target/
 *.cmd
 *.iml
+
+### 本地连接信息（含账号密码，不入库） ###
+application-local.yml

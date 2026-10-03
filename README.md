@@ -68,21 +68,22 @@ src/main/resources
 
    然后执行 `src/main/resources/community.sql`。
 
-2. 配置连接信息。凭据不再写入配置文件，改为通过环境变量注入（`application.yml` 中已全部改为占位符）：
+2. 填写本地连接信息。编辑 `src/main/resources/application-local.yml`（该文件已在 `.gitignore` 中，不会提交）：
 
-   | 环境变量 | 说明 | 默认值 |
-   | --- | --- | --- |
-   | `DB_URL` | MySQL JDBC URL | `jdbc:mysql:///community?...` |
-   | `DB_USERNAME` | 数据库账号 | `root` |
-   | `DB_PASSWORD` | 数据库密码 | 空 |
-   | `GITHUB_CLIENT_ID` | 在 [GitHub Developer Settings](https://github.com/settings/applications/new) 创建 OAuth App 后获取 | 空 |
-   | `GITHUB_CLIENT_SECRET` | 同上 | 空 |
-   | `GITHUB_REDIRECT_URI` | OAuth 回调地址 | `http://localhost:8080/callback` |
-
-   ```bash
-   export DB_USERNAME=root DB_PASSWORD='你的密码'
-   export GITHUB_CLIENT_ID='xxx' GITHUB_CLIENT_SECRET='yyy'
+   ```yaml
+   spring:
+     datasource:
+       username: root
+       password: 你的密码
+   github:
+     clienid: 你的 client id
+     client_secret: 你的 client secret
+     redirect_uri: http://localhost:8080/callback
    ```
+
+   OAuth App 在 [GitHub Developer Settings](https://github.com/settings/applications/new) 创建，回调地址填 `http://localhost:8080/callback`。
+
+   `application.yml` 通过 `spring.profiles.active: local` 加载该文件，公共配置（数据源 URL、MyBatis、分页等）仍留在 `application.yml` 中。部署时用外部同名文件覆盖即可。
 
 3. 启动（需 JDK 8）：
 
