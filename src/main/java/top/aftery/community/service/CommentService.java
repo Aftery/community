@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import top.aftery.community.dto.CommentDto;
-import top.aftery.community.enums.CommenTypeEnum;
+import top.aftery.community.enums.CommentTypeEnum;
 import top.aftery.community.enums.NotificationTypeEnum;
 import top.aftery.community.enums.NotificationStatusEnum;
 import top.aftery.community.exception.CustomizeErrorCode;
@@ -52,16 +52,16 @@ public class CommentService {
         if (null == comment.getParentId() || comment.getParentId() == 0) {
             throw new CustomizeException(CustomizeErrorCode.TARGET_PARAM_NOT_FOUND);
         }
-        if (null == comment.getType() || !CommenTypeEnum.isExist(comment.getType())) {
+        if (null == comment.getType() || !CommentTypeEnum.isExist(comment.getType())) {
             throw new CustomizeException(CustomizeErrorCode.TYPE_PARAM_WRONG);
         }
 
-        if (comment.getType() == CommenTypeEnum.COMMENT.getType()) {
+        if (comment.getType() == CommentTypeEnum.COMMENT.getType()) {
             //回复评论
 
             Comment dbComment = commentDao.selectByPrimaryKey(comment.getParentId());
             if (null == dbComment) {
-                throw new CustomizeException(CustomizeErrorCode.COMMINT_NOT_FOUND);
+                throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
             //查询问题
             Question question = questionDao.selectByPrimaryKey(dbComment.getParentId());
@@ -113,7 +113,7 @@ public class CommentService {
         notificationDAO.insertSelective(record);
     }
 
-    public List<CommentDto> listByQuestionId(Long id, CommenTypeEnum commenTypeEnum) {
+    public List<CommentDto> listByQuestionId(Long id, CommentTypeEnum commenTypeEnum) {
         CommentExample example = new CommentExample();
         example.createCriteria()
                 .andParentIdEqualTo(id)

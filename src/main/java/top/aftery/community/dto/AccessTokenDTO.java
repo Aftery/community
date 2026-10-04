@@ -13,7 +13,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @SuppressWarnings("all")
-public class AccessTockenDTO {
+public class AccessTokenDTO {
 
     private String client_id;
     private String client_secret;

@@ -6,7 +6,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import top.aftery.community.dto.CommentDto;
 import top.aftery.community.dto.ResultDTO;
-import top.aftery.community.enums.CommenTypeEnum;
+import top.aftery.community.enums.CommentTypeEnum;
 import top.aftery.community.exception.CustomizeErrorCode;
 import top.aftery.community.model.Comment;
 import top.aftery.community.model.User;
@@ -48,7 +48,7 @@ public class CommentController {
     @ResponseBody
     @RequestMapping(value = "/comment/{id}", method = RequestMethod.GET)
     public ResultDTO<List> comments(@PathVariable(name ="id") Long id) {
-        List<CommentDto> commentDtos = commentService.listByQuestionId(id, CommenTypeEnum.COMMENT);
+        List<CommentDto> commentDtos = commentService.listByQuestionId(id, CommentTypeEnum.COMMENT);
         return ResultDTO.okOf(commentDtos);
     }
 

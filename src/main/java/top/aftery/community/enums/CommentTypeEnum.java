@@ -5,14 +5,14 @@ package top.aftery.community.enums;
  * by 2019-12-2
  */
 
-public enum CommenTypeEnum {
+public enum CommentTypeEnum {
     QUESTION(1),
     COMMENT(2);
 
     private Integer type;
 
     public static boolean isExist(Integer type) {
-        for (CommenTypeEnum value : CommenTypeEnum.values()) {
+        for (CommentTypeEnum value : CommentTypeEnum.values()) {
             if (value.getType().equals(type)) {
                 return true;
             }
@@ -24,7 +24,7 @@ public enum CommenTypeEnum {
         return type;
     }
 
-    CommenTypeEnum(Integer type) {
+    CommentTypeEnum(Integer type) {
         this.type = type;
     }
 }

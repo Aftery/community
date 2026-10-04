@@ -1,30 +1,27 @@
 package top.aftery.community.interceptor;
 
-import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.util.StrUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
-import top.aftery.community.mapper.UserDAO;
 import top.aftery.community.model.User;
-import top.aftery.community.model.UserExample;
 import top.aftery.community.service.NotificationService;
+import top.aftery.community.service.UserService;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 /**
  * @Author Aftery
- * @Date 2019/11/24 14:37
+ * @Date 2019-11-24 14:37
  * @Version 1.0
  **/
-@Service
-@SuppressWarnings("all")
+@Component
 public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired
-    private UserDAO mapper;
+    private UserService userService;
 
     @Autowired
     private NotificationService notificationService;
@@ -40,27 +37,23 @@ public class SessionInterceptor implements HandlerInterceptor {
             for (Cookie cookie : cookies) {
                 if ("token".equals(cookie.getName())) {
                     String token = cookie.getValue();
-                    if (cn.hutool.core.util.StrUtil.isBlank(token)) {
+                    if (StrUtil.isBlank(token)) {
                         continue;
                     }
-                    UserExample example = new UserExample();
-                    example.createCriteria().andTokenEqualTo(token);
-                    List<User> users = mapper.selectByExample(example);
-                    if (CollUtil.isNotEmpty(users)) {
-                        User user = users.get(0);
+                    User user = userService.getByToken(token);
+                    if (user != null) {
                         request.getSession().setAttribute("user", user);
                         Long unreadCount = notificationService.unreadCount(user.getId());
                         request.getSession().setAttribute("unreadCount", unreadCount);
                     } else {
-                        // token 失效但 cookie 还在，清理残留 session
+                        // token 失效但 session 还有残留（如服务重启后旧 token 被清理场景的反向情况）
                         request.getSession().removeAttribute("user");
                         request.getSession().removeAttribute("unreadCount");
                     }
-                    break; // 找到 token 就停，不用继续遍历 cookie 数组
+                    break;
                 }
             }
         }
         return true;
     }
-
 }

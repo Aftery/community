@@ -72,7 +72,7 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('26', 'Aftery', '37588923', 'e1ec4f5b-6ead-46a1-979d-e98ae21da0fb', '1574774519568', '1575292781940', 'https://avatars2.githubusercontent.com/u/37588923?v=4');
+INSERT INTO `user` VALUES ('26', 'DemoUser', '10000000', 'demo-token-0000000000000000000000000000', '1574774519568', '1575292781940', 'https://avatars.githubusercontent.com/u/10000000?v=4');
 
 -- ----------------------------
 -- View structure for questionuser

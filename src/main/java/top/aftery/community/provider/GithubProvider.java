@@ -4,7 +4,7 @@ import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import top.aftery.community.dto.AccessTockenDTO;
+import top.aftery.community.dto.AccessTokenDTO;
 import top.aftery.community.dto.GithubUser;
 
 import java.util.HashMap;
@@ -17,9 +17,9 @@ import java.util.HashMap;
 @Slf4j
 @Component
 @SuppressWarnings("all")
-public class GitubProvider {
+public class GithubProvider {
 
-    public String getAccessTocken(AccessTockenDTO accessTockenDTO) {
+    public String getAccessTocken(AccessTokenDTO accessTockenDTO) {
         HashMap<String, Object> map = new HashMap<>(16);
         map.put("client_id", accessTockenDTO.getClient_id());
         map.put("client_secret", accessTockenDTO.getClient_secret());
@@ -52,11 +52,13 @@ public class GitubProvider {
     }
 
     public GithubUser getUser(String accessTocken) {
-        HashMap<String, Object> paramMap = new HashMap<>();
-        paramMap.put("access_token", accessTocken);
-        String json = HttpUtil.get("https://api.github.com/user", paramMap);
+        // GitHub API v3 必须把 token 放在 Authorization 请求头里，不接受 URL 参数
+        String json = HttpUtil.createGet("https://api.github.com/user")
+                .header("Authorization", "token " + accessTocken)
+                .header("Accept", "application/json")
+                .execute()
+                .body();
 
-        // 凭据失效时 GitHub 返回 {"message":"Bad credentials"}，没有 id，直接 toBean 会造出一个全空的 User
         if (!JSONUtil.parseObj(json).containsKey("id")) {
             log.error("github 获取用户信息失败: {}", json);
             return null;

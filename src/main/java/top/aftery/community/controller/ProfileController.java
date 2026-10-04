@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import top.aftery.community.dto.NotificationDTO;
 import top.aftery.community.model.Notification;
 import top.aftery.community.model.Questionuser;
 import top.aftery.community.model.User;

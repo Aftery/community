@@ -1,9 +1,9 @@
-github:
-  # 仅填 Client ID（如 f88879001d2eec8aa7d6），完整的 authorize URL 由后端拼
-  clienid: f88879001d2eec8aa7d6
-  # 填 GitHub OAuth App 的 Client Secret，敏感信息建议放到 application-local.yml 覆盖
-  client_secret: YOUR_CLIENT_SECRET_HERE
-  redirect_uri: http://localhost:8080/callback
+#github:
+#  # 仅填 Client ID（如 f88879001d2eec8aa7d6），完整的 authorize URL 由后端拼
+#  clienid: f88879001d2eec8aa7d6
+#  # 填 GitHub OAuth App 的 Client Secret，敏感信息建议放到 application-local.yml 覆盖
+#  client_secret: YOUR_CLIENT_SECRET_HERE
+#  redirect_uri: http://localhost:8080/callback
 spring:
   # 账号密码等本地连接信息放在 application-local.yml，该文件不纳入版本管理
   profiles:

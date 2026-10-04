@@ -53,4 +53,14 @@ public class UserService {
         }
         return users.get(0);
     }
+
+    public User getByToken(String token) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andTokenEqualTo(token);
+        List<User> users = mapper.selectByExample(userExample);
+        if (CollUtil.isEmpty(users)) {
+            return null;
+        }
+        return users.get(0);
+    }
 }

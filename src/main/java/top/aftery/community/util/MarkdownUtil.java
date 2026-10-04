@@ -15,7 +15,7 @@ public class MarkdownUtil {
     private static final Safelist SAFELIST = Safelist.relaxed().addAttributes(":all", "class");
 
 
-    public  static  String reader(String markdown) {
+    public  static  String render(String markdown) {
         if (markdown == null) {
             return ""
                     ;

@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import top.aftery.community.dto.CommentDto;
-import top.aftery.community.enums.CommenTypeEnum;
+import top.aftery.community.enums.CommentTypeEnum;
 import top.aftery.community.exception.CustomizeErrorCode;
 import top.aftery.community.exception.CustomizeException;
 import top.aftery.community.model.Question;
@@ -42,11 +42,11 @@ public class QuestionController {
         }
         //查询的相关问题
         List<Question> relatedQuestions=service.selectRelated(questionuser);
-        List<CommentDto> comments =commentService.listByQuestionId(id, CommenTypeEnum.QUESTION);
+        List<CommentDto> comments =commentService.listByQuestionId(id, CommentTypeEnum.QUESTION);
         //累计阅读列表
         service.incView(id);
         log.info("\n questionuser:{}", questionuser);
-        model.addAttribute("safeDescription", MarkdownUtil.reader(questionuser.getDescription()));
+        model.addAttribute("safeDescription", MarkdownUtil.render(questionuser.getDescription()));
         model.addAttribute("question", questionuser);
         model.addAttribute("comments", comments);
         model.addAttribute("relatedQuestions",relatedQuestions);

@@ -8,10 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import top.aftery.community.dto.AccessTockenDTO;
+import top.aftery.community.dto.AccessTokenDTO;
 import top.aftery.community.dto.GithubUser;
 import top.aftery.community.model.User;
-import top.aftery.community.provider.GitubProvider;
+import top.aftery.community.provider.GithubProvider;
 import top.aftery.community.service.UserService;
 
 import javax.servlet.http.Cookie;
@@ -33,7 +33,7 @@ import java.util.UUID;
 public class AuthorizeController {
 
     @Autowired
-    private GitubProvider provider;
+    private GithubProvider provider;
 
     @Value("${github.clienid}")
     private String clientId;
@@ -54,19 +54,25 @@ public class AuthorizeController {
         String url = "https://github.com/login/oauth/authorize?client_id=" + clientId
                 + "&redirect_uri=" + URLEncoder.encode(redirectUri, "UTF-8")
                 + "&scope=user&state=" + state;
-        session.setAttribute("oauth_url", url);
         return "redirect:"+url;
     }
 
 
     @GetMapping("/callback")
-    public String callback(@RequestParam(name = "code") String code, @RequestParam("state") String state, HttpServletRequest request, HttpServletResponse response) {
+    public String callback(@RequestParam(name = "code", required = false) String code,
+                           @RequestParam(name = "error", required = false) String error,
+                           @RequestParam(name = "state", required = false) String state,
+                           HttpServletRequest request, HttpServletResponse response) {
+        // 用户在 GitHub 授权页点了拒绝，只会带 error 回来
+        if (StrUtil.isNotEmpty(error) || StrUtil.isEmpty(code)) {
+            return "redirect:/";
+        }
         String expected = (String) request.getSession().getAttribute("oauth_state");
         if (expected == null || !expected.equals(state)) {
             return "redirect:/";
         }
         request.getSession().removeAttribute("oauth_state");
-        AccessTockenDTO accessTockenDTO = new AccessTockenDTO();
+        AccessTokenDTO accessTockenDTO = new AccessTokenDTO();
         accessTockenDTO.setClient_id(clientId);
         accessTockenDTO.setClient_secret(clientSecret);
         accessTockenDTO.setCode(code);
