@@ -19,6 +19,7 @@ public enum CustomizeErrorCode implements ICustomizeErrorCode {
     READ_NOTIFICATION_FAIL(2008, "醒醒吧!!!你查看的别人的信息"),
     NOTIFCATION_NOT_FAIL(2009, "消息莫非被吃了!!!"),
     EDIT_QUESTION_NO_PERMISSION(2010, "你只能编辑自己发布的问题"),
+    CONTENT_TOO_LONG(2011, "内容太长了，精简一下再提交吧"),
     ;
 
     private String message;

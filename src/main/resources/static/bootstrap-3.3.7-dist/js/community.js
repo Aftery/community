@@ -18,7 +18,7 @@ function comment2target(questionId, type, contene) {
         dataType: "json",
         success: function (data) {
             console.log(data);
-            if (data.code == "200") {
+            if (data.code === "200") {
                 console.log("进来了---------");
                 //$("#comment_section").hide();
                 window.location.reload();
@@ -27,7 +27,7 @@ function comment2target(questionId, type, contene) {
                     var isAccepted = confirm("你好没登陆，是否先登录?");
                     if (isAccepted) {
                         localStorage.setItem("closable", "true");
-                        window.open("https://github.com/login/oauth/authorize?client_id=f88879001d2eec8aa7d6&redirect_uri=http://localhost:8080/callback&scope=user&state=90");
+                        window.open("/login");
                     }
 
                 } else {
@@ -95,14 +95,14 @@ function collapseComments(e) {
                         "class": "media-body"
                     }).append($("<h5/>", {
                         "class": "media-heading",
-                        "html": comment.user.name
+                        "text": comment.user.name
                     })).append($("<div/>", {
-                        "html": comment.content
+                        "text": comment.content
                     })).append($("<div/>", {
                         "class": "menu"
                     }).append($("<span/>", {
                         "class": "pull-right",
-                        "html": moment(comment.gmtCreate).format('YYYY-MM-DD')
+                        "text": moment(comment.gmtCreate).format('YYYY-MM-DD')
                     })));
 
                     var mediaElement = $("<div/>", {

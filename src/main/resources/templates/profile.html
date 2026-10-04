@@ -32,7 +32,7 @@
                         <span class="text-desc">
                         <span th:text="${question.commentCount}"></span>个回复 • <span
                                 th:text="${question.viewCount}"></span>浏览 • <span
-                                th:text="${#dates.format(question.gmtCreate,'yyyy-mm-dd')}"></span> •
+                                th:text="${#dates.format(question.gmtCreate,'yyyy-MM-dd')}"></span> •
 
                          <a th:href="@{'/publish/'+${question.id}}" class="menu"
                             th:if="${session.user !=null && session.user.id==question.creator}">

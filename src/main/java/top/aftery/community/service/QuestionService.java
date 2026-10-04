@@ -6,6 +6,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Service;
 import top.aftery.community.exception.CustomizeErrorCode;
 import top.aftery.community.exception.CustomizeException;
@@ -87,7 +88,14 @@ public class QuestionService {
         return null;
     }
 
-    public void saveOrUpdate(Question question) {
+    public void saveOrUpdate( Question question) {
+        if(question.getId()!=null){
+            question.setCommentCount(null);
+            question.setViewCount(null);
+            question.setLikeCount(null);
+            question.setGmtCreate(null);
+            question.setCreator(null);
+        }
         if (question.getId() == null) {
             question.setGmtCreate(System.currentTimeMillis());
             question.setGmtModified(question.getGmtCreate());
@@ -118,9 +126,17 @@ public class QuestionService {
         if (StrUtil.isEmpty(questionuser.getTag())) {
             return Collections.emptyList();
         }
-        String replace = StrUtil.replace(questionuser.getTag(), ",", "|");
+        // 标签里可能有 c++ 这类正则非法字符，逐个转义后再拼或匹配，否则 MySQL regexp 直接报错
+        String pattern = Arrays.stream(questionuser.getTag().split(","))
+                .map(String::trim)
+                .filter(StrUtil::isNotBlank)
+                .map(tag -> REGEX_META.matcher(tag).replaceAll("\\\\$1"))
+                .collect(Collectors.joining("|"));
+        if (StrUtil.isEmpty(pattern)) {
+            return Collections.emptyList();
+        }
         Question question = new Question();
-        question.setTag(replace);
+        question.setTag(pattern);
         question.setId(questionuser.getId());
         List<Question> questions = extDAO.selectRelated(question);
         return questions;

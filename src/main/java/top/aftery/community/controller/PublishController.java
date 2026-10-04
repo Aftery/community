@@ -79,12 +79,24 @@ public class PublishController {
             model.addAttribute("error", "标题不能为空");
             return "publish";
         }
+        if (question.getTitle().length() > 50) {
+            model.addAttribute("error", "标题不能超过 50 字");
+            return "publish";
+        }
         if (StringUtils.isEmpty(question.getDescription())) {
             model.addAttribute("error", "问题补充不能为空");
             return "publish";
         }
+        if (question.getDescription().length() > 16000) {
+            model.addAttribute("error", "问题补充过长，请精简到 1.6 万字以内");
+            return "publish";
+        }
         if (StringUtils.isEmpty(question.getTag())) {
             model.addAttribute("error", "标签不能为空");
+            return "publish";
+        }
+        if (question.getTag().length() > 256) {
+            model.addAttribute("error", "标签总长不能超过 256 字");
             return "publish";
         }
         String invalid = TagCache.filterInvalid(question.getTag());

@@ -38,9 +38,19 @@ public class UserService {
         updateUser.setGmtModified(System.currentTimeMillis());
         updateUser.setAvatarUrl(user.getAvatarUrl());
         updateUser.setName(user.getName());
-        updateUser.setToken(user.getToken());
+        //updateUser.setToken(user.getToken());
         UserExample userExample1 = new UserExample();
         userExample1.createCriteria().andIdEqualTo(users.get(0).getId());
         mapper.updateByExampleSelective(updateUser, userExample1);
+    }
+
+    public User getByAccountId(String accountId) {
+        UserExample userExample = new UserExample();
+        userExample.createCriteria().andAccountIdEqualTo(accountId);
+        List<User> users = mapper.selectByExample(userExample);
+        if (CollUtil.isEmpty(users)) {
+            return null;
+        }
+        return users.get(0);
     }
 }

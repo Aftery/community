@@ -34,6 +34,9 @@ public class CommentController {
         if(comment==null || StringUtils.isEmpty(comment.getContent())){
             return  ResultDTO.errorOf(CustomizeErrorCode.CONTENT_IS_EMPTY);
         }
+        if (comment.getContent().length() > 1024) {
+            return ResultDTO.errorOf(CustomizeErrorCode.CONTENT_TOO_LONG);
+        }
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModified(comment.getGmtCreate());
         comment.setCommentator(user.getId());

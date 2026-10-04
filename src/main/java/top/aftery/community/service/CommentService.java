@@ -95,18 +95,15 @@ public class CommentService {
     }
 
     /**
-     * 创建通知
-     * @param comment
-     * @param commentator
-     * @param name
-     * @param title
-     * @param replyComment
-     * @param parentId
+     * 创建通知；自己回复自己不通知
      */
-    private void createNotify(Comment comment, Integer commentator, String name, String title, NotificationTypeEnum replyComment, Long parentId) {
+    private void createNotify(Comment comment, Integer receiver, String name, String title, NotificationTypeEnum replyComment, Long parentId) {
+        if (comment.getCommentator() == null || comment.getCommentator().equals(receiver)) {
+            return;
+        }
         Notification record = new Notification();
         record.setNotifier(Long.valueOf(comment.getCommentator()));
-        record.setReceiver(Long.valueOf(commentator));
+        record.setReceiver(Long.valueOf(receiver));
         record.setOuterid(parentId);
         record.setType(replyComment.getType());
         record.setGmtCreate(System.currentTimeMillis());

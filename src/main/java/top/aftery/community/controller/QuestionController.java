@@ -14,6 +14,7 @@ import top.aftery.community.model.Question;
 import top.aftery.community.model.Questionuser;
 import top.aftery.community.service.CommentService;
 import top.aftery.community.service.QuestionService;
+import top.aftery.community.util.MarkdownUtil;
 
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class QuestionController {
         //累计阅读列表
         service.incView(id);
         log.info("\n questionuser:{}", questionuser);
+        model.addAttribute("safeDescription", MarkdownUtil.reader(questionuser.getDescription()));
         model.addAttribute("question", questionuser);
         model.addAttribute("comments", comments);
         model.addAttribute("relatedQuestions",relatedQuestions);

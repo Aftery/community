@@ -1,11 +1,9 @@
 package top.aftery.community.interceptor;
 
 import cn.hutool.core.collection.CollUtil;
-import cn.hutool.core.util.ArrayUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 import top.aftery.community.mapper.UserDAO;
 import top.aftery.community.model.User;
 import top.aftery.community.model.UserExample;
@@ -33,37 +31,36 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // 已有登录态直接放行，避免每次请求都查库
+        if (request.getSession().getAttribute("user") != null) {
+            return true;
+        }
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if ("token".equals(cookie.getName())) {
                     String token = cookie.getValue();
+                    if (cn.hutool.core.util.StrUtil.isBlank(token)) {
+                        continue;
+                    }
                     UserExample example = new UserExample();
                     example.createCriteria().andTokenEqualTo(token);
                     List<User> users = mapper.selectByExample(example);
-                    boolean notEmpty = CollUtil.isNotEmpty(users);
-                    if (notEmpty) {
+                    if (CollUtil.isNotEmpty(users)) {
                         User user = users.get(0);
-                        if (user != null) {
-                            request.getSession().setAttribute("user", user);
-                            Long unreadCount = notificationService.unreadCount(user.getId());
-                            request.getSession().setAttribute("unreadCount", unreadCount);
-                        }
+                        request.getSession().setAttribute("user", user);
+                        Long unreadCount = notificationService.unreadCount(user.getId());
+                        request.getSession().setAttribute("unreadCount", unreadCount);
+                    } else {
+                        // token 失效但 cookie 还在，清理残留 session
+                        request.getSession().removeAttribute("user");
+                        request.getSession().removeAttribute("unreadCount");
                     }
-
+                    break; // 找到 token 就停，不用继续遍历 cookie 数组
                 }
             }
         }
         return true;
     }
 
-    @Override
-    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-
-    }
-
-    @Override
-    public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-
-    }
 }

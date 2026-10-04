@@ -3,9 +3,13 @@ package top.aftery.community.advice;
 import cn.hutool.core.util.StrUtil;
 import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.ModelAndView;
 import top.aftery.community.dto.ResultDTO;
 import top.aftery.community.exception.CustomizeErrorCode;
@@ -26,9 +30,8 @@ import java.io.IOException;
 public class CustomizeExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
-    ModelAndView handle(HttpServletRequest request, Exception e, Model model, HttpServletResponse response) {
-        String contentType = request.getContentType();
-        if (StrUtil.startWithIgnoreCase(contentType, "application/json")) {
+    ModelAndView handle(HttpServletRequest request, Object handler, Exception e, Model model, HttpServletResponse response) {
+        if (isJsonRequest(handler, request)) {
             ResultDTO resultDTO = e instanceof CustomizeException
                     ? ResultDTO.errorOf((CustomizeException) e)
                     : ResultDTO.errorOf(CustomizeErrorCode.SYS_ERROR);
@@ -53,6 +56,23 @@ public class CustomizeExceptionHandler {
             }
         }
 
+    }
+
+    /**
+     * JSON 请求判定：优先看 handler 是否标注 @ResponseBody/@RestController（GET 类 JSON 接口无请求体，
+     * 不能依赖请求 Content-Type），兜底再看 Accept/Content-Type 头。
+     */
+    private boolean isJsonRequest(Object handler, HttpServletRequest request) {
+        if (handler instanceof HandlerMethod) {
+            HandlerMethod handlerMethod = (HandlerMethod) handler;
+            if (handlerMethod.hasMethodAnnotation(ResponseBody.class)
+                    || AnnotatedElementUtils.hasAnnotation(handlerMethod.getBeanType(), RestController.class)
+                    || AnnotatedElementUtils.hasAnnotation(handlerMethod.getBeanType(), ResponseBody.class)) {
+                return true;
+            }
+        }
+        return StrUtil.containsIgnoreCase(request.getHeader("Accept"), "application/json")
+                || StrUtil.startWithIgnoreCase(request.getContentType(), "application/json");
     }
 
 

@@ -100,5 +100,22 @@ select
     `user`.`avatar_url` AS `user_avatar_url`
 from (`question` join `user` on((`question`.`creator` = `user`.`id`)));
 
+-- ----------------------------
+-- Table structure for notification
+-- ----------------------------
+DROP TABLE IF EXISTS `notification`;
+CREATE TABLE `notification` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `notifier` bigint(20) DEFAULT NULL COMMENT '通知人',
+  `receiver` bigint(20) DEFAULT NULL COMMENT '接收人',
+  `outerId` bigint(20) DEFAULT NULL COMMENT '被回复的问题 id',
+  `type` int(11) DEFAULT NULL COMMENT '通知类型：1-回复问题，2-回复评论',
+  `gmt_create` bigint(20) DEFAULT NULL COMMENT '创建时间',
+  `status` int(11) DEFAULT '0' COMMENT '阅读状态：0-未读，1-已读',
+  `notifier_name` varchar(50) DEFAULT NULL COMMENT '通知人昵称',
+  `quter_title` varchar(256) DEFAULT NULL COMMENT '被回复的问题标题',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 -- 3. 恢复外键检查
 SET FOREIGN_KEY_CHECKS=1;

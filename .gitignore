@@ -39,3 +39,6 @@ build/
 
 ### 本地连接信息（含账号密码，不入库） ###
 application-local.yml
+
+### 用户上传的图片 ###
+/upload/

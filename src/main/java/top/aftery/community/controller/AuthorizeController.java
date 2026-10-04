@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import top.aftery.community.dto.AccessTockenDTO;
@@ -16,6 +17,9 @@ import top.aftery.community.service.UserService;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.UUID;
 
 /**
@@ -32,7 +36,7 @@ public class AuthorizeController {
     private GitubProvider provider;
 
     @Value("${github.clienid}")
-    private String clienid;
+    private String clientId;
 
     @Value("${github.client_secret}")
     private String clientSecret;
@@ -43,11 +47,27 @@ public class AuthorizeController {
     @Autowired
     private UserService userService;
 
+    @GetMapping("/login")
+    public String login(HttpSession session) throws UnsupportedEncodingException {
+        String state = UUID.randomUUID().toString().replace("-","");
+        session.setAttribute("oauth_state", state);
+        String url = "https://github.com/login/oauth/authorize?client_id=" + clientId
+                + "&redirect_uri=" + URLEncoder.encode(redirectUri, "UTF-8")
+                + "&scope=user&state=" + state;
+        session.setAttribute("oauth_url", url);
+        return "redirect:"+url;
+    }
+
 
     @GetMapping("/callback")
     public String callback(@RequestParam(name = "code") String code, @RequestParam("state") String state, HttpServletRequest request, HttpServletResponse response) {
+        String expected = (String) request.getSession().getAttribute("oauth_state");
+        if (expected == null || !expected.equals(state)) {
+            return "redirect:/";
+        }
+        request.getSession().removeAttribute("oauth_state");
         AccessTockenDTO accessTockenDTO = new AccessTockenDTO();
-        accessTockenDTO.setClient_id(clienid);
+        accessTockenDTO.setClient_id(clientId);
         accessTockenDTO.setClient_secret(clientSecret);
         accessTockenDTO.setCode(code);
         accessTockenDTO.setRedirect_uri(redirectUri);
@@ -65,7 +85,9 @@ public class AuthorizeController {
             user.setToken(UUID.randomUUID().toString());
             user.setAvatarUrl(githubUser.getAvatar_url());
             userService.saveOrUpdate(user);
-            response.addCookie(buildTokenCookie(user.getToken(), -1));
+            User saved = userService.getByAccountId(user.getAccountId());
+            // 新用户 token 在 saveOrUpdate 里生成，老用户保留原 token，统一从 DB 读
+            response.addCookie(buildTokenCookie(saved.getToken(), -1));
             return "redirect:/";
         } else {
             return "redirect:/";
